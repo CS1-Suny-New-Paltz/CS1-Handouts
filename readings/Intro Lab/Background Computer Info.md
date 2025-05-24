@@ -1,17 +1,17 @@
-Background Computer Info
+# Background Computer Info
 
-Introduction
+## Introduction
+
+<img align="right" src="images/meme.jpg" alt="Pepperidge Farm Remembers" width="25%"/>
 
 Back in the day, anyone using a computer had to know the ins and outs of the file system and to some extent the command line, along with a few troubleshooting skills. Now, operating systems have improved to the point where that's no longer true. Along the way, common pieces of software have adopted a different set of UI (User Interface) design principles (very roughly, these are called "**mobile first**" design practices); on the other hand, more specialized software (both for programming and other courses you may take in college) has typically stuck with an older UI format, known as a **menu-based** UI (in more advanced courses, you'll get to see an even older UI format, command-line-based UIs).These design practices are **surprisingly different** in terms of how users are expected to interact with them. In this course, you'll be learning how to work with menu-based UIs, as the tools that we'll be using are primarily built this way.
 
 
-<img align="right" src="images/meme.jpg" alt="Pepperidge Farm Remembers" width="25%"/>
-
-Quick Tip: Customize Your Mouse
+## Quick Tip: Customize Your Mouse
 
 Common terms to refer to mouse-based interactions (vs touch-screen interactions) are "click" and "right click" (or sometimes "left click" and "right click"). What you, specifically, actually do to trigger a right click depends on your computer's hardware and operating system, but it's also customizable. Common options: an actual right-click button, click the right half/bottom right corner of the touch pad, Command key \+ click, or two-finger click. You should set up your computer to use something that you find intuitive and easy (usually configurable under your operating system's settings).
 
-Error Messages
+## Error Messages
 
 Many people ignore error messages \- ‘just click a button to make the dialogue box go away’ works reasonably well most of the time. However, starting in this class (and likely continuing on in your other classes, regardless of your major), you’ll be interacting with software where you’re expected to **fix** the cause of the error message \- that requires reading the message to know what you need to do.
 
@@ -23,11 +23,11 @@ Some error messages won't pop up \- they'll sit quietly and wait for you to noti
 
 As part of this class, you’ll be working with a number of new and unfamiliar systems \- part of the learning objectives for the course are developing the **problem solving and troubleshooting** skills to successfully work with new pieces of software. If you run into an error, the expectation is that you will try to **solve it on your own first** before asking for help \- you’ll notice that one of the first questions that you’ll get asked if you get stuck is ‘what have you tried?’. You can still ask for help, of course\! Troubleshooting is a skill that you’ll be developing, so you aren’t expected to be perfect at it every time. As a rough guideline: if you've spent 30 minutes trying to troubleshoot an error, and haven't made any progress, **ask for help.**
 
-File Systems
-
-The file system on your computer stores any data that doesn't go away when you restart the computer (this applies to your phone/tablet as well, not just laptops). It's modeled after a filing cabinet \- there's the outer cabinet (called the **'root'**), and within the cabinet, there are **folders**. Those folders might contain individual pieces of paper (**files**), or even more folders (called **sub-folders**, or **nested** folders).   
+## File Systems
 
 <img align="right" src="images/files.jpg" alt="File Folder" width="25%"/>
+
+The file system on your computer stores any data that doesn't go away when you restart the computer (this applies to your phone/tablet as well, not just laptops). It's modeled after a filing cabinet \- there's the outer cabinet (called the **'root'**), and within the cabinet, there are **folders**. Those folders might contain individual pieces of paper (**files**), or even more folders (called **sub-folders**, or **nested** folders).   
 
 The full list of folders to get to a file is called its **path**. For example "Start with the 'Lecture Hall' folder, find the 'Science Hall' subfolder, and then look at the SH 181 file" would be a set of directions to find a file in a real filing cabinet. On a computer, the path might look like "C:\\Lecture Hall\\Science Hall\\SH 181.txt". There's also a shorthand version of a path (called a **relative path**) that starts at whatever folder you're currently looking at, and navigates from there. So if you had just been looking in the Science Hall folder, and asked "Hey, where's the file for Science Hall 260?", the answer might be 'That's the one called SH 260'; in computer terms, you could just open file "SH 260.txt" if you were already in the Science Hall folder.
 
@@ -37,7 +37,7 @@ How can you find out **where a file is**? Every file in every program is stored 
 
 On a mobile device, the file system still exists, but is often hidden \- the best way to get to your files is usually through a program. Fun experiment: see if you can find where the photos from your phone camera are stored on your phone's file system.
 
-How Does This Apply to CS1?
+## How Does This Apply to CS1?
 
 The programs you create will be saved in .java files on your computer; these files are text files that you can open in not just Eclipse, but any text editor (Notepad, Word, etc). Typically, for an assignment, you'll want to know:
 

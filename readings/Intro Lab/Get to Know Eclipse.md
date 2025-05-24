@@ -1,14 +1,14 @@
-Get to Know Eclipse
+# Get to Know Eclipse
 
-Introduction
+## Introduction
 
 Eclipse is a professional-grade piece of software \- it's commonly used by developers at major companies to write Java code. This means there are a **lot** of features, settings, bells and whistles. We won't be using all of these this semester (although feel free to poke around\!) \- each assignment will have relevant settings pre-configured for CS1. There are several very handy features that you'll want to be familiar with, though\!
 
-Workspace and Projects
+## Workspace and Projects
 
 A **workspace** in Eclipse is a collection of general settings \- as part of the first lab, you'll be downloading a pre-configured workspace for this class, which will include some handy key shortcuts as well as customized visual components.  Typically, there are also several **projects** \- these are a group of .java files with the code for a particular program or set of related programs. For CS1, each week's assignment will be a new project within the workspace; the workspace itself will stay the same all semester.
 
-Java Perspective
+## Java Perspective
 
 Within a given workspace, there are several **perspectives** \- this is a visual layout optimized for a particular task. As you move through the various phases of building your programs, you'll switch from one perspective to another to have easy access to the right tools at the right time. The **Java perspective** is optimized for **writing** code. It looks like this:  
 
@@ -34,7 +34,7 @@ To open a file in the main text editing area, double-click it in the Package Exp
 
 *Console* **\-** this is where many programs will print their output; if your program **crashes**, it will print details here.
 
-Debug Perspective
+## Debug Perspective
 
 This perspective is designed for **fixing issues** with your code after you've written it \- for professionals, most of their time (\~70%) is spent debugging, which is why there's an entire perspective devoted to this. In this perspective, the actual text window is smaller, and there are some extra windows to provide context about what's going on with your code **while it's running.**
 
@@ -52,13 +52,13 @@ In addition to Package Explorer and JUnit, there's a new view called Debug
 
 *Expressions \-* This view lets you run **ad-hoc experiments** on your code. This is the 'Oh, hold on, try tightening that screw/unplugging that cord and moving it to a different outlet/twisting the door knob the other way' part of figuring out where a problem is. You can add an **expression**, which is a single line of code, and the computer will run that and tell you what happened.
 
-Switching Perspectives
+## Switching Perspectives
 
 Usually, after being in the debug perspective for a while, you'll find a problem with the program and then need to go fix it. Switching back to the Java perspective can be helpful if you're back to writing code rather than running it, which you can do by clicking the relevant small icon in the upper right:  
 
-<img src="images/perspective.png" alt="Perspective Selector" width="50%"/>
+<img src="images/perspective.png" alt="Perspective Selector" width="75%"/>
 
-Keyboard Shortcuts
+## Keyboard Shortcuts
 
 Switching from mouse to keyboard is slow and gets old real fast. Some keyboard shortcuts that can help:
 
