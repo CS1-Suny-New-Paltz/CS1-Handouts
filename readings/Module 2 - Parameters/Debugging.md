@@ -1,6 +1,6 @@
-Debugging
+# Debugging
 
-**Introduction**
+## Introduction
 
 Building a computer program involves 3 major steps:
 
@@ -10,11 +10,11 @@ Building a computer program involves 3 major steps:
 
 As it turns out, the better you get at programming, the more time you spend on the last step \- a professional software engineer will spend about 70% of their time debugging. Fortunately, there are a number of tools and techniques to help with this process\!
 
-**What not to do**
+## What not to do
 
-It’s tempting to try to find bugs by “looking at the code” \- especially because you may notice your TA and professor doing that\! While giving the code a quick once-over is never a bad idea, it’s not **systematic** \- if you don’t immediately see the problem, there’s no way to just “look harder”. The more experience you have, the more often you’ll be able to spot bugs just by looking, but the art of debugging picks up when looking doesn’t work.
+It’s tempting to try to find bugs by “looking at the code” \- especially because you may notice your TA and professor doing that\! While giving the code a quick once-over is never a bad idea, it’s not **systematic** \- if you don’t immediately see the problem, there’s no way to just “look harder”. The more experience you have, the more often you’ll be able to spot bugs just by looking, but the art of debugging picks up when looking doesn’t work. Imagine looking for a bug in code to be like looking for your lost keys - sure, you'll take a quick scan of the room first, but then you'll start with a more systematic search (Where did you see the keys last? Have you checked the pockets of the clothes you were wearing? How about looking on the floor near where you usually keep the keys?).
 
-**What to do Instead**
+## What to do Instead
 
 Debugging is like solving a mystery \- you assemble clues, form theories, and check whether those theories fit all the data. 
 
@@ -54,7 +54,7 @@ Gather Data
 
 **Note:** you might notice that a stack trace looks very similar to what shows up in the 'Debug' view when you stop at a breakpoint \- that's not a coincidence\!
 
-**How to read a stack trace:**
+## How to read a stack trace:
 
 	The exact line where something went wrong is often not useful, because it's within some library \- while IRL you will occasionally find (and have to work around) a bug in 3rd party code, that's unusual and out of scope for this class. Scan down the stack trace, starting from the top, until you find a reference to a file you can edit. This will give you both a file and a **line number** in that file \- for both the console and JUnit views in eclipse, you can **double-click** on that line in the stack trace to open the specific code in the editor.
 
