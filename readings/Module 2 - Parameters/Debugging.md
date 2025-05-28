@@ -12,7 +12,7 @@ As it turns out, the better you get at programming, the more time you spend on t
 
 ## What not to do
 
-It’s tempting to try to find bugs by “looking at the code” \- especially because you may notice your TA and professor doing that\! While giving the code a quick once-over is never a bad idea, it’s not **systematic** \- if you don’t immediately see the problem, there’s no way to just “look harder”. The more experience you have, the more often you’ll be able to spot bugs just by looking, but the art of debugging picks up when looking doesn’t work. Imagine looking for a bug in code to be like looking for your lost keys - sure, you'll take a quick scan of the room first, but then you'll start with a more systematic search (Where did you see the keys last? Have you checked the pockets of the clothes you were wearing? How about looking on the floor near where you usually keep the keys?).
+It’s tempting to try to find bugs by “looking at the code” \- especially because you may notice your TA and professor doing that\! While giving the code a quick once-over is never a bad idea, it’s not **systematic** \- if you don’t immediately see the problem, there’s no way to just “look harder”. The more experience you have, the more often you’ll be able to spot bugs just by looking, but the art of debugging picks up when looking doesn’t work. 
 
 ## What to do Instead
 
@@ -25,46 +25,52 @@ First, identify exactly what causes the problem:
 
 For example, suppose you were dealing with this code, which crashes into a wall:
 
-	**public** **static** **void** main(String\[\] args) {  
-		Robot binky \= **new** Robot();  
+```
+	public static void main(String[] args) {  
+		Robot binky = new Robot();  
 		  
-		**while** (**true**) {  
+		while (true) {  
 		    binky.moveForward();  
 		}  
 	}
+```
 
 The cause of the problem would be "Running the program". This is a nice, simple cause, but it's important to identify, because the steps to trigger the problem are what you're going to do repeatedly to track down the bug. One **common mistake** that students make is to try to fix a problem where the cause is "Running the Checklist" by repeatedly running through steps of "Running the program" \- while that can sometimes be useful (see: "reproducing a bug", below), you usually don't want to start with that.
 
 Next, clarify what and where the problem is:
 
 - What does the “not working” look like? This might be an exception causing a crash, a test failure, or an unexpected/incorrect behavior (2 \+ 3 \= 4 is incorrect behavior, 2 \+ 3 \= Unexpected Arithmetic Exception is a crash)  
-- Where does the problem happen? Use breakpoints in your code or a stack trace to find the **first** place that something is incorrect or unexpected
+- Where does the problem happen? Use breakpoints in your code or a stack trace to find **one** place that something is incorrect or unexpected
 
 In our example, the problem is a crash \- when the program runs, it crashes, and prints 
 
-Exception in thread "main" binky.BadBinkySituationException: Binky can't go there\! Illegal position: (5, 10\)  
+```
+Exception in thread "main" binky.BadBinkySituationException: Binky can't go there! Illegal position: (5, 10)  
 	at binky.Robot.moveForward(Robot.java:55)  
 	at binky.HelloWorldBinky.main(HelloWorldBinky.java:9)
 
+```
  to the console. 
 
-Gather Data
+## Gather Data
 
-	Programs crashing are actually easier to debug than incorrect behavior \- it's a lot easier to figure out where to start looking\! When a Java program crashes, it generates a **stack trace**: this is a record of what line of code it was trying to run when the crash happened, and context about how it got there. For simple programs, "how the program got there" is usually easy to spot, but as programs get more complex, this becomes increasingly useful.
+Programs crashing are actually easier to debug than incorrect behavior \- it's a lot easier to figure out where to start looking\! When a Java program crashes, it generates a **stack trace**: this is a record of what line of code it was trying to run when the crash happened, and context about how it got there. For simple programs, "how the program got there" is usually easy to spot, but as programs get more complex, this becomes increasingly useful.
 
 **Note:** you might notice that a stack trace looks very similar to what shows up in the 'Debug' view when you stop at a breakpoint \- that's not a coincidence\!
 
 ## How to read a stack trace:
 
-	The exact line where something went wrong is often not useful, because it's within some library \- while IRL you will occasionally find (and have to work around) a bug in 3rd party code, that's unusual and out of scope for this class. Scan down the stack trace, starting from the top, until you find a reference to a file you can edit. This will give you both a file and a **line number** in that file \- for both the console and JUnit views in eclipse, you can **double-click** on that line in the stack trace to open the specific code in the editor.
+The exact line where something went wrong is often not useful, because it's within some library \- while IRL you will occasionally find (and have to work around) a bug in 3rd party code, that's unusual and out of scope for this class. Scan down the stack trace, starting from the top, until you find a reference to a file you can edit. This will give you both a file and a **line number** in that file \- for both the console and JUnit views in eclipse, you can **double-click** on that line in the stack trace to open the specific code in the editor.
 
-	The other very **useful part** of the stack trace is the **message**: this is right at the top, just before the list of files and line numbers. This message will give you any hints or relevant information that your program had about what went wrong \- sometimes it's just a description of what happened ("dividing by 0"), but sometimes it's more detailed ("There aren't any breadcrumbs on square (0,0)").
+The other very **useful part** of the stack trace is the **message**: this is right at the top, just before the list of files and line numbers. This message will give you any hints or relevant information that your program had about what went wrong \- sometimes it's just a description of what happened ("dividing by 0"), but sometimes it's more detailed ("There aren't any breadcrumbs on square (0,0)").
 
 Let's apply that to our stack trace from earlier:
 
-Exception in thread "main" binky.BadBinkySituationException: Binky can't go there\! Illegal position: (5, 10\)  
+```
+Exception in thread "main" binky.BadBinkySituationException: Binky can't go there! Illegal position: (5, 10)  
 	at binky.Robot.moveForward(Robot.java:55)  
 	at binky.HelloWorldBinky.main(HelloWorldBinky.java:9)
+```
 
 The Robot.class file isn't one that's editable in any of the assignments \- it's part of the starter code. So moving down the list, we see the problem is in HelloWorldBinky.java, specifically the main method, on line 9 \- there's no line numbers in the earlier code snippet, but that's the line that says 
 
@@ -78,7 +84,7 @@ Now we have some data\! The crash happens when Binky moves forward, and it's hap
 
 What could cause this behavior? You don't need to know the full chain of logic that leads to this point \- tracking down a bug involves working backwards from where the problem is **observed** (what you found previously) to the **root cause**. While you can always jump ahead if you "see" the bug, this is the process you follow if you don't immediately see what's wrong. For example, in our problem, the hypothesis could be that we aren't checking for the edge of the grid before moving forward. This may sound a bit silly \- of course that's the problem\! What else could it be? Keep in mind, though, you wouldn't be debugging in the first place if the program worked exactly the way you thought it did. The really exciting part of debugging is when you form what you think is an obvious hypothesis, and then it turns out to be wrong.
 
-Part of forming a hypothesis is being specific about **what your code is actually doing** \- while it sounds a bit backwards, sometimes the easiest way to find why your code isn’t doing what you want is to focus on what it’s actually doing **instead**.
+Part of forming a hypothesis is being specific about **what your code is actually doing** \- while it sounds a bit backwards, sometimes the easiest way to find why your code isn’t doing what you want is to focus on what it’s actually doing instead.
 
 **Test the hypothesis:**  
 Run through the code and see if the hypothesis is true by setting a **breakpoint** on a relevant line of code, and checking what specifically is happening. This might involve looking in the **Variables** view to see what values are stored in memory, or using the "Step Over" button to see what line of code runs when (button highlighted in orange below).
