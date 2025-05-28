@@ -97,11 +97,11 @@ In our example, we'd set a breakpoint on the line with the while loop, and then 
 
 At some point, you’ll find a cause that you can fix (the while loop should check binky.isClear()), and now you’re done\! While for smaller programs, there's often just this one step, by the end of the semester, you'll have programs that will likely involve multiple steps in this process. It's a good idea to **practice** the debugging process now, so that you can effectively tackle more complex bugs later. 
 
-**Reproducing a Bug:**
+## Reproducing a Bug:
 
 Sometimes, the steps to trigger the original crash in a program are annoying to have to do repeatedly. Finding a smaller, shorter, more automated, or more informative way of triggering the crash is called **reproducing** the issue, and makes the process of repeatedly triggering the bug more efficient. For example, you may notice that there aren't any graphics when you run the Checklist for an assignment, but being able to visually see what's happening (particularly with Binky) can be useful. If you're able to create a bug in a different way (for example, using a particular world file for Binky and running your program with the graphics), you can use that instead. However, if you **aren't** able to recreate the bug, you may be stuck with running through the original process of triggering the bug.
 
-**Debugging a Checklist Item**
+## Debugging a Checklist Item
 
 Sometimes, if you run the checklist, you'll see a failure that looks something like this                      →
 
