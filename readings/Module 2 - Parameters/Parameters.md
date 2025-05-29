@@ -18,7 +18,7 @@ Within the larger aegis of **hardcoded values**, there are two subtypes that we'
 
 **String Literals**
 
-<img align="right" src="images/bday.jpg" alt="Happy Birthday Balloons" width="20%"/>
+<img align="right" src="images/bday.png" alt="Happy Birthday Balloons" width="20%"/>
 
 The name for a piece of text in programming (Java or otherwise) is a "string", short for a "string of characters" - as a helpful visual mnemonic, picture a balloon sign with letters strung together. Strings are deceptively complicated, and we'll revisit them later in the semester, but for now when you see 'string', think 'word' or 'text'. To specify a string literal in Java, use double-quotes around it \- "Hello world", "Never gonna give you up.mp3", "It was the best of times, it was the worst of times", and "123" are all strings. Strings can contain spaces, letters, numbers, and punctuation ("special characters") \- depending on the encoding, they can contain other things as well (such as emojis), but we'll stick with things you can type on a standard keyboard for right now.
 
@@ -38,7 +38,7 @@ We'll talk about exactly what's going on with these more when we get to variable
 
 A **constant** is a bit more flexible than a literal, because any programmer can create one. The first constants that we'll be dealing with relate to colors \- red, green, blue, etc. By convention, constants are in all caps in Java, and are preceded by the **class** where they're defined, followed by a '.'.
 
-\_\_\_\_\_\_\_\_\_\_\_\_\_\_.\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_  
+\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_.\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_  
 (Name of class)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(all-caps name of constant)
 
 The color constants we'll be using come standard with the JRE (Java Runtime Environment), which means any Java program has access to them. They live in the Color class, and include a basic palette of colors:
@@ -65,16 +65,16 @@ Parameters can be used when creating a new object (with a **constructor**), or w
 
 Recall our previous syntax template for a constructor (used to create a new instance):
 
-\_\_\_\_\_\_\_\_\_\_\_\_        \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ \= new \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ ();  
-(Type of object)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(name for this specific instance)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(Type of object, same as before) 
+\_\_\_\_\_\_\_\_\_\_\_\__\_\_\_\_&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ \= new \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ ();  
+(Type of object)&nbsp;&nbsp;&nbsp;(name for this specific instance)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(Type of object, same as before) 
 
 Ex:   
 `Robot binky = new Robot();`
 
 To pass a parameter, we're going to update that template:
 
-\_\_\_\_\_\_        \_\_\_\_\_\_\_\_\_\_ \= new \_\_\_\_\_\_\_\_ (**\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_**);  
-(Type)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(name)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(Type)&nbsp;&nbsp;**(comma-separated list of 0 or more parameters)**
+\_\_\_\_\_\_\_\_\_        \_\_\_\_\_\_\_\_\_\_ \= new \_\_\_\_\_\_\_\_ (**\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_**);  
+(Type)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(name)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(Type)&nbsp;&nbsp;**(comma-separated list of 0 or more parameters)**
 
 Ex:  
 `Robot binky = new Robot("wholeNew.world");`
@@ -89,7 +89,7 @@ Similarly, for a method:
 
 ## What can you use as a parameter/when can you use one?
 
-Just as you can only call a method that is defined for particular type (you can ask Binky to move forward with a moveForward method, but since there isn't a moveBackward method defined, he can't move backward just with a single method call), you can only use parameters with methods or constructors that have defined parameters.
+Just as you can only call a method that is defined for a particular type (you can ask Binky to move forward with a moveForward method, but since there isn't a moveBackward method defined, he can't move backward just with a single method call), you can only use parameters with methods or constructors that have defined parameters.
 
 Every method we've seen up until now has had a **method signature** that just included open/close parentheses. For example:
 
@@ -126,7 +126,7 @@ The next parameter we'll look at is for a new, non-overloaded method \- in order
 
 Here, we can see the type is Color \- we'll need to provide one of the constants defined in the Color class (technically, you can also create your own custom colors, but we'll stick with the constants for now). The name of the variable, lowercase-c color, doesn't provide a lot of additional information \- by convention, that means that **any** parameter with the correct type should work reasonably well (if the variable were named something like 'primaryColor' or 'greyscaleColor', that would be a hint about what specific values of type Color will work well). As you might expect from the name of the method, calling this will cause Binky to change the color of the square he's standing on to the one that you specify.
 
-Given what the method does, it should make sense why this parameter is not optional \- if you're going to paint something, you have to have a color that you're painting it. Typically, method parameters are similarly important and required \- overloaded methods are generally ones where there are sensible and commonly used **default** behaviors (if you look under the hood, that's what happens with the Robot constructor \- when no file is specified, it uses the file "default.world").
+Given what the method does, it should make sense why this parameter is not optional \- if you're going to paint something, you have to have a color that you're painting it. Method parameters are similarly required \- overloaded methods are generally ones where there are sensible and commonly used **default** behaviors (if you look under the hood, that's what happens with the Robot constructor \- when no file is specified, it uses the file "default.world").
 
 Putting this all together: suppose we wanted to have Binky appear in a specific world represented by the file singleSquare.world, and paint the square he starts on blue (note: the preceding sentence serves as our **pseudo code** that we're going to now translate directly to code, one line per clause in the sentence). The code for that would look like:
 
@@ -166,8 +166,8 @@ will make Binky move forward one square if he's currently standing on a red squa
 **Reading** code and **writing** code are two fairly different skill sets \- skimming through code that follows coding conventions around whitespace and uses descriptive variable names can give you the **gist** of what a program is doing even when you don't know what the constructions are doing in detail (this is a good thing, and part of why coding conventions and descriptive variable names are valuable). On the other hand, writing code (and even more so, debugging code) requires that you understand **exactly what each piece of syntax is doing**. So let's go through that if statement above in more detail to see exactly what's going on. This is a bit like doing a **close reading** of a piece of text in a literature class.
 
 
-**if (**binky.getSquareColor().equals(Color.RED)**) {**  
-  binky.moveForward();  
+**if (** binky.getSquareColor().equals(Color.RED) **) {**  
+&nbsp;&nbsp;&nbsp;&nbsp;binky.moveForward();  
 **}**
 
 The first thing Java will do when running this code is parse the conditional (the 'if'). Recall the syntax template for an if:
@@ -185,60 +185,64 @@ if ( ________________________ ) {
 So the code here says that if the thing in the parentheses (`binky.getSquareColor().equals(Color.RED)`) is true, then the code in the curly braces ( `binky.moveForward();`) will run, otherwise it won't.
 
 Next, Java will call each method in the conditional statement **in left-to-right order** so that it can determine if the whole statement evaluates to true or false.  
-First, that's `binky.getSquareColor()`. This method will return a Color object representing the color of the square. Java (specifically, the JVM, or Java Virtual Machine) will then use that to evaluate the rest of the line. Let's consider a case where Binky is standing on a blue square:
+First, that's `binky.getSquareColor()`. This method will return a Color object representing the color of the square. As the program runs, the JVM (Java Virtual Machine) will then use that to evaluate the rest of the line. Let's consider a case where Binky is standing on a blue square:
 
-binky.getSquareColor().equals(Color.RED)
+`binky.getSquareColor().equals(Color.RED)`
 
 becomes
 
-    Color.BLUE  
+&nbsp;&nbsp;&nbsp;&nbsp;Color.BLUE  
 ~~binky.getSquareColor()~~.equals(Color.RED)
 
-Color.BLUE.equals(Color.RED)
+`Color.BLUE.equals(Color.RED)`
 
 is calling a method on Color.BLUE (the 'equals' method) with a parameter of Color.RED \- calling a method on an object is equivalent to asking it a question or telling it to do something. In this case, we're asking Color.BLUE if it is equal to Color.RED \- Color.BLUE will say no, it's not.
 
 So now Java can update
 
-Color.BLUE.equals(Color.RED)
+`Color.BLUE.equals(Color.RED)`
 
 to
 
-      false  
+&nbsp;&nbsp;&nbsp;&nbsp;false  
 ~~Color.BLUE.equals(Color.RED)~~
 
 meaning the if statement now looks like:
 
+```
 if (false) {  
   binky.moveForward();  
 }
+```
 
 So Binky will not move.
 
 But what if Binky had been standing on a red square?  
 Now we'd have
 
-binky.getSquareColor().equals(Color.RED)
+`binky.getSquareColor().equals(Color.RED)`
 
 becomes
 
-    Color.RED  
+&nbsp;&nbsp;&nbsp;&nbsp;Color.RED  
 ~~binky.getSquareColor()~~.equals(Color.RED)
 
 When we ask Color.RED if it's equal to Color.RED, it will say yes:
 
-Color.RED.equals(Color.RED)
+`Color.RED.equals(Color.RED)`
 
 becomes
 
-      true  
+&nbsp;&nbsp;&nbsp;&nbsp;true  
 ~~Color.RED.equals(Color.RED)~~
 
 Now we have an if statement that looks like:
 
+```
 if (true) {  
   binky.moveForward();  
 }
+```
 
 In which case, Binky **will** move\!
 
