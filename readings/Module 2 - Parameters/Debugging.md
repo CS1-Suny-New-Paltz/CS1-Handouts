@@ -72,7 +72,7 @@ Exception in thread "main" binky.BadBinkySituationException: Binky can't go ther
 	at binky.HelloWorldBinky.main(HelloWorldBinky.java:9)
 ```
 
-The Robot.class file isn't one that's editable in any of the assignments \- it's part of the starter code. So moving down the list, we see the problem is in HelloWorldBinky.java, specifically the main method, on line 9 \- there's no line numbers in the earlier code snippet, but that's the line that says 
+The Robot.java file isn't one that's editable in any of the assignments \- it's part of the starter code. So moving down the list, we see the problem is in HelloWorldBinky.java, specifically the main method, on line 9 \- there's no line numbers in the earlier code snippet, but that's the line that says 
 
 	binky.moveForward();
 
@@ -89,7 +89,7 @@ Part of forming a hypothesis is being specific about **what your code is actuall
 **Test the hypothesis:**  
 Run through the code and see if the hypothesis is true by setting a **breakpoint** on a relevant line of code, and checking what specifically is happening. This might involve looking in the **Variables** view to see what values are stored in memory, or using the "Step Over" button to see what line of code runs when (button highlighted in orange below).
 
-![][image1]
+<img src="images/stepOver.png" alt="Step Over" width="50%"/>
 
 If the hypothesis is true, repeat the process to figure out the next cause one back in the chain. If it’s not, come up with an alternate hypothesis.   
 	  
@@ -97,22 +97,26 @@ In our example, we'd set a breakpoint on the line with the while loop, and then 
 
 At some point, you’ll find a cause that you can fix (the while loop should check binky.isClear()), and now you’re done\! While for smaller programs, there's often just this one step, by the end of the semester, you'll have programs that will likely involve multiple steps in this process. It's a good idea to **practice** the debugging process now, so that you can effectively tackle more complex bugs later. 
 
-## Reproducing a Bug:
+## Reproducing a Bug
 
 Sometimes, the steps to trigger the original crash in a program are annoying to have to do repeatedly. Finding a smaller, shorter, more automated, or more informative way of triggering the crash is called **reproducing** the issue, and makes the process of repeatedly triggering the bug more efficient. For example, you may notice that there aren't any graphics when you run the Checklist for an assignment, but being able to visually see what's happening (particularly with Binky) can be useful. If you're able to create a bug in a different way (for example, using a particular world file for Binky and running your program with the graphics), you can use that instead. However, if you **aren't** able to recreate the bug, you may be stuck with running through the original process of triggering the bug.
 
 ## Debugging a Checklist Item
 
-Sometimes, if you run the checklist, you'll see a failure that looks something like this                      →
+Sometimes, if you run the checklist, you'll see a failure that looks something like this  
+
+<img src="images/junitEx" alt="JUnit Exception" width="50%"/>→
 
 Which isn't terribly easy to read. While you can scroll right to figure out what's up, you can also click the highlighted icon to copy this information to the **console**, where it's easier to read. 
 
-For this example, you'd then get ![][image2]
+For this example, you'd then get
+
+<img src="images/consoleEx.jpg" alt="Console Exception" width="50%"/>
 
 which is more like the stack traces we've seen before.
 
 What happens when a test fails, and the stack trace doesn't seem to involve your code at all? Often, it's easiest to treat these failures as a type of **incorrect behavior** (the above example happens when the program claims that 2 \+ 3 \= 4\) rather than a crash \- you can use the **error message** to find out more details about exactly what was incorrect. The checklist items are sometimes deliberately vague, however \- when that happens, you should see if you can **reproduce the bug** outside the checklist framework.
 
-If you aren't able to reproduce the bug, you can use **breakpoints** in your code to get a better sense of what the Checklist is doing \- put a breakpoint somewhere plausible, and then run the checklist item in **Debug Mode** (Debug As \> instead of Run As \>). You'll be able to use the **Variables** view to see what's going on in your program, which can help track down the problem.
+If you aren't able to reproduce the bug, you can use **breakpoints** in your code to get a better sense of what the Checklist is doing \- put a breakpoint somewhere plausible (such as the first line of your main method), and then run the checklist item in **Debug Mode** (Debug As \> instead of Run As \>). You'll be able to use the **Variables** view to see what's going on in your program, which can help track down the problem.
 
-If you get completely stuck: you can ask your TA or professor to take a look at the code on github. Make sure you include what steps you've already tried when you ask\! Otherwise you may just get advice to try those steps again, since we won't generally just tell you the answer \- you'll just get advice on how to move forward in the debugging process yourself.  
+If you get completely stuck: you can ask your TA or professor to take a look at the code on github. Make sure you include what steps you've already tried when you ask\! Otherwise you may get advice to try those same steps, which isn't very helpful.  
