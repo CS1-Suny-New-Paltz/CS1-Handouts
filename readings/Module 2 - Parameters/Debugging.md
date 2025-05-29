@@ -16,6 +16,8 @@ It’s tempting to try to find bugs by “looking at the code” \- especially b
 
 ## What to do Instead
 
+<img align="right" src="images/sherlock.jpg" alt="Sherlock" width="20%"/>
+
 Debugging is like solving a mystery \- you assemble clues, form theories, and check whether those theories fit all the data. 
 
 First, identify exactly what causes the problem:
@@ -39,7 +41,7 @@ The cause of the problem would be "Running the program". This is a nice, simple 
 
 Next, clarify what and where the problem is:
 
-- What does the “not working” look like? This might be an exception causing a crash, a test failure, or an unexpected/incorrect behavior (2 \+ 3 \= 4 is incorrect behavior, 2 \+ 3 \= Unexpected Arithmetic Exception is a crash)  
+- What does “not working” look like? This might be an exception causing a crash, a test failure, or unexpected/incorrect behavior (2 \+ 3 \= 4 is incorrect behavior, 2 \+ 3 \= Unexpected Arithmetic Exception is a crash)  
 - Where does the problem happen? Use breakpoints in your code or a stack trace to find **one** place that something is incorrect or unexpected
 
 In our example, the problem is a crash \- when the program runs, it crashes, and prints 
@@ -54,13 +56,13 @@ Exception in thread "main" binky.BadBinkySituationException: Binky can't go ther
 
 ## Gather Data
 
-Programs crashing are actually easier to debug than incorrect behavior \- it's a lot easier to figure out where to start looking\! When a Java program crashes, it generates a **stack trace**: this is a record of what line of code it was trying to run when the crash happened, and context about how it got there. For simple programs, "how the program got there" is usually easy to spot, but as programs get more complex, this becomes increasingly useful.
+Programs crashing are actually easier to debug than incorrect behavior \- it's a lot easier to figure out where to start looking\! When a Java program crashes, it generates a **stack trace**: this is a record of what line of code it was trying to run when the crash happened, and context about how it got there. For simple programs, "how the program got there" is usually easy to spot, but as programs get more complex, stack traces become increasingly useful.
 
 **Note:** you might notice that a stack trace looks very similar to what shows up in the 'Debug' view when you stop at a breakpoint \- that's not a coincidence\!
 
 ## How to read a stack trace:
 
-The exact line where something went wrong is often not useful, because it's within some library \- while IRL you will occasionally find (and have to work around) a bug in 3rd party code, that's unusual and out of scope for this class. Scan down the stack trace, starting from the top, until you find a reference to a file you can edit. This will give you both a file and a **line number** in that file \- for both the console and JUnit views in eclipse, you can **double-click** on that line in the stack trace to open the specific code in the editor.
+The exact line where something went wrong is often not useful, because it's within some library \- while IRL you will occasionally find (and have to work around) a bug in 3rd party code, that's unusual and out of scope for this class. Scan down the stack trace, starting from the top, until you find a reference to a file you can edit. This will give you both a **file** and a **line number** in that file \- for both the console and JUnit views in eclipse, you can **double-click** on that line in the stack trace to open the specific code in the editor.
 
 The other very **useful part** of the stack trace is the **message**: this is right at the top, just before the list of files and line numbers. This message will give you any hints or relevant information that your program had about what went wrong \- sometimes it's just a description of what happened ("dividing by 0"), but sometimes it's more detailed ("There aren't any breadcrumbs on square (0,0)").
 
@@ -105,13 +107,13 @@ Sometimes, the steps to trigger the original crash in a program are annoying to 
 
 Sometimes, if you run the checklist, you'll see a failure that looks something like this  
 
-<img src="images/junitEx" alt="JUnit Exception" width="50%"/>→
+<img src="images/junitEx.png" alt="JUnit Exception" width="50%"/>→
 
 Which isn't terribly easy to read. While you can scroll right to figure out what's up, you can also click the highlighted icon to copy this information to the **console**, where it's easier to read. 
 
 For this example, you'd then get
 
-<img src="images/consoleEx.jpg" alt="Console Exception" width="50%"/>
+<img src="images/consoleEx.png" alt="Console Exception" width="50%"/>
 
 which is more like the stack traces we've seen before.
 
