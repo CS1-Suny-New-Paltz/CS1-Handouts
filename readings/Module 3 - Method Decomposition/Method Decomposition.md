@@ -10,15 +10,15 @@ So far, we've just been calling methods that already exist. Now, we're going to 
 
 The process of moving code from just the main method into smaller sub-methods is called **method decomposition**.
 
-# How to Create a Method
+## How to Create a Method
 
 We've seen **method signatures** for methods on the Robot class already \- we'll be using a similar syntax to create our own. For now, all the methods will use the keyword **static** (you've already seen this with public **static** void main) \- when we get into creating custom object types, we'll talk more about what exactly that keyword means.
 
 Syntax for a public static method:
 
 ```
-public static ______________       ________________ (_______________________) {  
-		      (return value)      (name of method)    (0 or more parameters)
+public static ______________       ________________ (_______________________) {
+              (return value)      (name of method)    (0 or more parameters)
 
       _______________________________________________  
        (lines of code that run as part of the method)
@@ -48,9 +48,11 @@ Let's use a Binky Checkerboard problem as an example. The pseudo code is:
 
 For simplicity, the above pseudo-code omits some of the extra checks to see if a row exists. Looking at this pseudo code, we can see that 'reset to the next row' is something we want to do multiple times. So, we'd create a **method** that contains that logic, and give it a descriptive name. Let's call the method resetRow; it won't return anything, but what about parameters? The parameters that we've seen so far (passing a Color to paintSquare) have been data that's necessary to accomplish a task or answer a question. The same logic applies here \- in order to move Binky to the start of the next row, we need a reference to Binky. Any object that you need to refer to should be specified in the comma-separated list of parameters, with a **type** and then a **name**:
 
+```
 public static void resetRow(Robot binky) {  
    // code to reset to the next row here  
 }
+```
 
 What name should you use for the parameter? Anything you want\! Generally, the name should be descriptive **from the perspective of the method**. For this method, since it's resetting Binky to the next row, 'binky' is a nice descriptive name for the Robot.
 
@@ -69,19 +71,24 @@ It may be helpful to mentally read 'SomeType someName' as 'someName the SomeType
 Once you have the **method signature**, now you need to fill in the **method implementation**: that's the code needed to actually make the method work the way it's supposed to. We already came up with this resetting code in class, so the whole method will be:
 
 ```
-public static void resetRow(Robot binky) {  
+public static void resetRow(Robot binky) {
+   // move down one row if possible
    binky.turnRight();  
-   if (binky.isClear()) {  
-     binky.moveForward();  
+   if (binky.isClear()) {
+     binky.moveForward();
+
+     // turn to face east
+     binky.turnRight(); 
+
+     // walk to the beginning of the row
+     while (binky.isClear()) {  
+       binky.moveForward();  
+     }
+
+     // turn back around to face west
      binky.turnRight();  
+     binky.turnRight(); 
    }
-
-   while (binky.isClear()) {  
-     binky.moveForward();  
-   }
-
-   binky.turnRight();  
-   binky.turnRight();  
 }
 ```
 
@@ -117,9 +124,9 @@ while (binky.isClear()) {
 }
 ```
 
-## When to Create a Method: Advanced
+## When to Create a Method: Next Level
 
-Noticing that you have the same code copy-pasted in multiple places is relatively easy to do once you know to look for it. Where methods become powerful is when you notice that you have **similar** code in multiple places. Specifically, you want to find code that has the same logic, but different values for objects that are all of a consistent type. For example, if I have code that feeds Roxanne the Goat, and then a separate piece of code that feeds Billie Jean the Goat, the code won't be **identical**, but it is **similar** \- it's the same logic, but with a different Goat. If you find yourself tempted to copy-paste some code and then "fix up" a few things, chances are you're in this situation. 
+Noticing that you have the same code copy-pasted in multiple places is relatively easy to do once you know to look for it. Where methods become powerful is when you notice that you have **similar** code in multiple places. Specifically, you want to find code that has the **same logic**, but **different values** for objects that are all of a consistent type. For example, if I have code that feeds Roxanne the Goat, and then a separate piece of code that feeds Billie Jean the Goat, the code won't be identical, but it is similar \- it's the same logic, but with a different Goat. If you find yourself tempted to copy-paste some code and then "fix up" a few things, chances are you're in this situation. 
 
 Recall our useful definition of programming: **generalized** problem solving. You can still use a method to simplify code that is similar-but-not-identical, and you'll use a **parameter** to identify the part of the problem that's "generalized" \- your code will turn into a method that can feed **any** Goat, in much the same way that a music player program can play any mp3 file.
 
@@ -157,7 +164,7 @@ while (binky.isClear()) {
   // create a black square
   binky.paintSquare(Color.BLACK);  
 
-  // handle odd-sized worlds: if we still haven't reached the end of the row  
+  // if we still haven't reached the end of the row  
   if (binky.isClear()) {  
     binky.moveForward();
 	
@@ -182,7 +189,7 @@ public static void fillInRow(Robot binky, Color first, Color second) {
     // fill in the second color
     binky.paintSquare(second);  
 
-    // handle odd-sized worlds: if we still haven't reached the end of the row  
+    // if we still haven't reached the end of the row  
     if (binky.isClear()) {  
       binky.moveForward();
 	
@@ -210,12 +217,12 @@ while (binky.isClear()) {
 
 To pass in multiple parameter values, use a **comma separated list**, this time with **just the names** of objects or constants.
 
-If you were to debug this code, you'd find that it's missing an important check for whether binky is at a wall \- let's add that back in, and remove the now-redundant pseudo-code:
+If you were to debug this code, you'd find that it's missing an important check for whether binky is at the end of the world \- let's add that back in, and remove the now-redundant pseudo-code:
 
 ```
 Robot binky = new Robot();  
 while (binky.isClear()) {  
-   fillInRow(binky, Color.RED, Color.BLACK);  
+   fillInRow(binky, Color.RED, Color.BLACK);
    resetRow(binky);  
    if (binky.isClear()) {  
      fillInRow(binky, Color.BLACK, Color.RED);  
@@ -224,4 +231,8 @@ while (binky.isClear()) {
 }
 ```
 
-Looking at the above code, you might think 'Wow, that looks a lot like the pseudo-code we started with\!', and in fact, this is the way code is written by actual professional developers \- while pseudocode is rarely written out in comments IRL, it's written out with methods, and then as a second step, the method implementations are added (and then the process is repeated as necessary).
+Looking at the above code, you might think 'Wow, that looks a lot like the pseudo-code we started with\!', and in fact, this is the way code is written by actual professional developers \- while pseudocode is rarely written out in comments once you're fluent in a programming language, it's still written out with methods, and then as a second step, the method implementations are added (and then the process is repeated as necessary).
+
+## Encapsulation
+
+A theme for programs written in an object-oriented way is **encapsulation**, where detailed semantics about one part of the program are bundled up ("put into a capsule") and hidden from the rest of the program. Thinking back to the lego dinosaur we saw on the first day, the instructions for how to assemble the dinosaur out of legos **encapsulated** the details of how the dino was built. We were then able to interact with the dinosaur without needing to worry about individual legos. Method decomposition is the first example of how we'll add these different layers of details to programs - the outer program can be written without focusing on the details of resetRow or fillInRow. This makes it easier to break down a problem without getting too lost in the specific details on any sub-problem. We'll ramp this up even more when we start creating custom classes (foreshadowing!).
