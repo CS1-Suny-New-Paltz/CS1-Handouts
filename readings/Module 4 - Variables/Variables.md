@@ -6,7 +6,7 @@ Variables are a powerful tool for making large programs easier to write and reas
 
 ## Variable syntax
 
-The syntax template for a variable is similar to a parameter, and it's actually syntax that we've already seen for creating Binky (Binky is actually a variable of type Robot):
+The syntax template for a variable is similar to a parameter, and it's syntax that we've already seen for creating Binky (Binky is actually a variable of type Robot). To create a variable, you must both declare the variable and initialize it, which you can either do like this:
 
 ```
   __________________   ________________;
@@ -55,7 +55,7 @@ Consider some code to check if Binky is standing on a gray square:
 Recall that when evaluating this code, Java first calculates the return value of binky.getSquareColor(), then uses that value to call the .equals method with Color.GRAY as a parameter. Suppose we wanted to be very clear about this ordering, though, by making each method call its own statement/step of code. To do that, we could introduce a **variable** representing the result of the first method call \- this essentially lets us add a name into the code for clarity. The pseudo-code looks like:
 
 ```
-// Check what color square Binky is standing on \- call it squareColor  
+// Check what color square Binky is standing on - call it squareColor  
 // Now, see if squareColor is equal to GRAY
 ```
 
