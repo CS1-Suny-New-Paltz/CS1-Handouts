@@ -6,13 +6,13 @@
 
 There are two kinds of data types in Java \- object types (Robot, String, Color, etc) and **primitive types**. Primitive types are the building blocks for all the other types \- you can think of them as single legos. These types work slightly differently from the object types we've used so far.
 
-# Why Primitive Types?
+## Why Primitive Types?
 
 Fundamentally, primitive types exist because of memory management \- every piece of information in a program must be written down in memory. This in turn runs into a bootstrapping problem \- if you ask the computer for, say, 400 bytes to store some information, the computer will reserve those 400 bytes for you, and give you a **memory address** to refer to them. This works much like a physical address \- it's a short way to reference some location. Unfortunately, in order for your program to keep track of the address, it needs to write it down in memory, and now it needs to keep track of where it wrote down that address. To keep from having an infinite chain of addresses, a program starts with a list (called a **stack**) of small, fixed size memory spaces (this is a slight simplification, an operating systems or assembly class will give you more details, but it works for our purposes). 
 
 A primitive type is a **small, fixed size** piece of data where it would take just as much, if not more, memory in the stack to record an address for the data as it would to just write the data down directly. The syntax for these types is a holdover from earlier languages (C and C++), and continues in many other languages \- programming languages are heavily influenced by their predecessors. Unfortunately, that means that the code for interacting with a primitive type can look fairly different from the code for interacting with an object type \- clear pseudocode can help keep you out of trouble here.
 
-# Primitive Type Syntax
+## Primitive Type Syntax
 
 Unlike object types, where you can create new ones of your own (and therefore have a potentially infinite variety), primitive types are built into the Java language, and there are only a few of them. The main ones, which we'll be using for this course, are the following:
 
@@ -30,22 +30,24 @@ Other primitive types tend to be related to those four \- for example, a long is
 
 Unlike object types, primitive types don't support methods, and instead use operators. We've seen one operator already: **\!** to apply **negation** to a boolean type. Other operators in Java are basic mathematical ones:
 
-\+  addition  
-\-   subtraction  
-\*   multiplication  
-/   division
+| Symbol | Meaning |
+| :---- | :---------------------- |
+| \+ | addition |
+| \- | subtraction | 
+| \* | multiplication  |
+| / |  division |
 
-and boolean logic operators:
+and logical operators:
 
-	\!   negation  
-            &&   conjunction ('and')  
-	||      disjunction ('or' \- note that true || true is also true; this is an 'inclusive or' where at   
-least one or possibly both sides are true)  
-            \==    equality  
-            \!=     inequality  
-            \<, \>  less than, greater than; ie, true when the value on the wide side is bigger than the   
-value on the narrow side  
-            \<=, \>=   less than or equal, greater than or equal
+| Symbol | Meaning |
+| :---- | :---------------------- |
+| \! | negation |
+| && | conjunction ('and') |
+| \|\| | disjunction ('or' \- note that true \|\| true is also true; this is an 'inclusive or' where at least one or possibly both sides are true)   |
+| == | equality  |
+| \!= | inequality |
+| \<, \> | less than, greater than; ie, true when the value on the wide side is bigger than the value on the narrow side   |
+| \<=, \>= | less than or equal, greater than or equal |
 
 There are a few other specialized operators that we won't cover, but you should be aware that a single & or | is both a valid operator and almost certainly doesn't do what you want (those perform a bitwise and/or of the binary representation of the two values). Make sure to use && and || for a logical and/or.
 
@@ -113,7 +115,7 @@ When reading other people's code (in example snippets, other classes, etc), you'
 
 | Task | Long-hand version example | Short-hand version of the same |
 | :---- | :---- | :---- |
-| Updating a value | x \= x \+ 2; // increases x by 2 y \= y \* 3; // increases y by a                 // factor of 3 | x \+= 2; y \*= 3; |
+| Updating a value | x \= x \+ 2; // increases x by 2<br>y \= y \* 3; // increases y by a factor of 3 | x \+= 2; <br> y \*= 3; |
 | Incrementing a value by 1 | x \= x \+ 1; | x++; |
 
-If you're wondering how C++ got its name: it's claiming to be "one better" than the programming language C.
+If you're wondering how the programming language C++ got its name: it's claiming to be "one better" than the programming language C.
