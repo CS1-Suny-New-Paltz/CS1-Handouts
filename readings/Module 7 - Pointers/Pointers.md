@@ -5,6 +5,8 @@ memory. Specifically, it's important to track what changes to data are visible w
  
 ## Practical Applications of Literary Theory
 
+<img align="right" src="images/pipe.png" alt="N'est Pas Une Pipe" width="20%"/>
+
 There's a surprising connection between early 19th century literary theory and how programs manipulate computer memory. If you're familiar with Deconstruction as a literary technique, pointers will make a lot of sense (the pointer is the signifier, the object in memory is the signified). If you aren't, don't worry! The good news is that if you do take a literature class where this comes up, you'll have a big leg up there - Derrida is essentially talking about pointers.
 
 They key concept with both pointers and Deconstruction is that the **name** for something is closely related to, but not identical to, the **thing itself**. If I write the word 'cat' on a whiteboard, that **refers to** a physical fluffy animal, but the whiteboard itself is not the actual cat. As a result, there can be many ways to refer to the same single object - for example, "Science Hall 247" and "Katherine's Office" are different names for the same physical space. Even though there are multiple names for the room, there's still only one such room. For any **object type** in a program, the name for the object is stored separately from the object itself in memory. Primitive types, on the other hand, do not have this separation, and as a result can behave quite differently from objects.
