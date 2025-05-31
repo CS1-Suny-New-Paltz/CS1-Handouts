@@ -5,7 +5,7 @@ memory. Specifically, it's important to track what changes to data are visible w
  
 ## Practical Applications of Literary Theory
 
-<img align="right" src="images/pipe.png" alt="N'est Pas Une Pipe" width="20%"/>
+<img align="right" src="images/pipe.png" alt="N'est Pas Une Pipe" width="25%"/>
 
 There's a surprising connection between early 19th century literary theory and how programs manipulate computer memory. If you're familiar with Deconstruction as a literary technique, pointers will make a lot of sense (the pointer is the signifier, the object in memory is the signified). If you aren't, don't worry! The good news is that if you do take a literature class where this comes up, you'll have a big leg up there - Derrida is essentially talking about pointers.
 
@@ -13,13 +13,13 @@ They key concept with both pointers and Deconstruction is that the **name** for 
 
 ## How Do Pointers work
 
-A **pointer** is a small piece of memory that stores a **memory address** for some larger piece of data. A memory address works much like a physical address - just as "1 Hawk Dr" is a short way to refer to where SUNY New Paltz is, 0x02345 is a short way to refer to a specific location on a disk in your computer. Just as a physical address lets you send data to a location (ex: write a physical letter), you can send data to a particular location in computer memory (write a byte or bytes). You can also look up the location - just as a Street View application will let you see what's at a physical address, and you can ask your computer to tell you what's written at a particular memory address.
+A **pointer** is a small piece of memory that stores a **memory address** for some larger piece of data. A memory address works much like a physical address - just as "1 Hawk Dr" is a short way to refer to where SUNY New Paltz is, 0x02345 is a short way to refer to a specific location on a disk in your computer. Just as a physical address lets you send data to a location (ex: write a physical letter), you can send data to a particular location in computer memory (write a byte or bytes). You can also look up the location - similar to how a Street View application will let you see what's at a physical address, you can ask your computer to tell you what's written at a particular memory address.
 
 When you create an object-type variable, what actually happens is the computer sets up a small space to store an address, and associates the name you give to the variable with the address; this is called a **pointer**. This is similar to saving a favorite location with some name on a map ('Home', 'Work', 'School', etc). Just as you might have multiple people store the same location in their favorites, all with different names (a student might store 1 Hawk Dr as 'School', while a professor might store it as 'Work'), you can have multiple pointers, all with different names, that refer to the same address in memory.
 
 So how do you set up the **actual memory**? That's the `new` keyword! Anytime you see `new`, it's reserving enough space for all of an object's data in memory, and returning the **address** where that space is located. If we want to analyze the line
 
-`Robot binky = new Robot()`
+`Robot binky = new Robot();`
 
 The computer will do the following when it runs this code, in this order:
 
@@ -27,16 +27,24 @@ The computer will do the following when it runs this code, in this order:
 - Write down that address in a small space in memory (we'll call this the **pointer**)
 - Associate the name 'binky' with the small space containing the **address** for the Robot
 
-## Default values
+## Null Pointers
 
-Data in memory has a default value of all-0 bits. What that represents depends on the data \- for an int or a double, that’s the value 0 (or 0.0). For a boolean, it’s the value false. For object type pointers, that’s a value called `null`, and trying to use it will throw an exception (specifically, a NullPointerException, or NPE for short). Usually, the compiler will keep you from accessing this default value by requiring that values be **initialized** before being used (that’s the part of setting up a variable where it shows up on the left hand side of an \=), but it’s not a perfect system (and to make matters worse, you can actually initialize a pointer to `null` explicitly). If you have a pointer that is **null**, you can’t call any methods on it, including .equals \- this is one of the few cases where you’ll use \== or \!= with an object type.
+Data in memory has a default value of all-0 bits. What that represents depends on the data \- for an int or a double, that’s the value 0 (or 0.0). For a boolean, it’s the value false. For object type pointers, that’s a value called `null`, and trying to use it will throw an exception (specifically, a NullPointerException, or NPE for short). Usually, the compiler will keep you from accessing this default value by requiring that values be **initialized** before being used, but it’s not a perfect system; for example, you can actually initialize a pointer to `null`. If you have a pointer that is `null`, you can’t call any methods on it, including .equals \- this is one of the few cases where you’ll use \== or \!= with an object type. For example, if you wanted to check if Binky had been initialized, and if not, create a new Robot, you could write:
+
+```
+Robot binky = null;
+// some other code happens
+if (binky == null) {
+  binky = new Robot();
+}
+```
 
 ## Can I have a Visual?
 
-Yes\! If you would like to see pointers explained by a claymation Binky, watch this video:  
+Yes\! If you would like to see pointers explained by a claymation Binky, watch this short video:  
 [Binky Pointer Fun](https://www.youtube.com/watch?v=vm5MNP7pn5g) 
 
-This video uses a made-up example class called IntObj that has a field called value \- you can think of this class as existing to treat an int as an Object, for purposes of talking about pointers. After watching the video, see if you can figure out what the following code would do:
+This video uses a made-up example class called IntObj that has an instance variable called value \- you can think of this class as existing to treat an int as an Object, for purposes of talking about pointers. After watching the video, see if you can figure out what the following code would do:
 
 ```
 Robot binky = new Robot();  
@@ -94,7 +102,7 @@ public static void main(String[] args) {
 
 Visually, what happens is:
 
-<img src="images/pointer2.png" alt="Pointer Diagram 2" width="60%"/>
+<img src="images/pointer2.png" alt="Pointer Diagram 2" width="40%"/>
 
 What about this fairly similar program, though? This one won't crash!
 
@@ -113,7 +121,7 @@ public static void clearRobot(Robot robotParam) {
 
 What happens here is:
 
-<img src="images/pointer3.png" alt="Pointer Diagram 3" width="60%"/>
+<img src="images/pointer3.png" alt="Pointer Diagram 3" width="50%"/>
 
 This illustrates the difference between interacting with the pointer, which is **copied**, and the pointee, which is **not copied**. In this program, the pointer labeled binky is unaffected, because the method only got a copy of the pointer, and the Robot object itself is unaffected, because the clearRobot method only interacts with the pointer (via `=`), rather than the pointee (which uses a `.`)
 
@@ -144,7 +152,7 @@ public static void incrementCounter(int counterParam) {
 
 Visually, what's happening is:
 
-<img src="images/pointer4.png" alt="Pointer Diagram 4" width="60%"/>
+<img src="images/pointer4.png" alt="Pointer Diagram 4" width="40%"/>
 
 Since primitive types don't have pointers, the entire integer parameter is copied, and changes to the copy don't affect the original. If you're wondering how to get information about changes to a primitive type back out of a method, the solution is to use a **return value**:
 
