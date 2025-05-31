@@ -75,11 +75,13 @@ for (int numSquaresMoved = 0; numSquaresMoved < numBreadcrumbs; numSquaresMoved 
 }
 ```
 
+Now there's no risk of accidentally forgetting the update step!
+
 ## Incrementing Shorthand
 
 Remember the shorthand for incrementing a value by 1?   
 `numSquaresMoved = numSquaresMoved + 1`  
-Can be rewritten as  
+can be rewritten as  
 `numSquaresMoved += 1`  
 or  
 `numSquaresMoved++`
