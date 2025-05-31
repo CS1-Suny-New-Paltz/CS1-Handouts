@@ -6,7 +6,7 @@ Many programming problems require that the program behave **differently** each t
 
 ## The Random class
 
-Creating pseudorandom numbers is done by creating a complicated mathematical sequence, where the elements of the sequence appear to be effectively random. One of the advantages of many modern programming languages (Java, Python, Javascript, C++, etc) is the ability to leverage code that other folks have already written to solve common problems, which is what we'll be doing here \- Java comes with a built in random number generator that already handles all the math involved. This class is called **Random**, and you can create your very own random number generator in much the same way you can create your own Robot: instead of 
+Creating pseudorandom numbers is done by creating a complicated mathematical sequence, where the elements of the sequence appear to be effectively random. One of the advantages of many modern programming languages (Java, Python, Javascript, C++, etc) is the ability to leverage code that other folks have already written to solve common problems, which is what we'll be doing here \- Java comes with a built in random number generator that already handles all the math involved. This class is called **Random**, and you can create your very own random number generator in much the same way you can create your own Robot. Instead of 
 
 `Robot binky = new Robot();`
 
@@ -14,7 +14,7 @@ you can write
 
 `Random rng = new Random();`
 
-and now you have a random number generator named 'rng'.
+and now you have a random number generator named 'rng'. You'll notice that to create that code, we're applying the syntax template for creating a new object, using `Random` as the type, and `rng` as the name - as the semester goes on, you'll start using new classes that we haven't covered specifically. It's a good idea to try to recognize the **patterns** for how to create an object now, so that you'll be able to apply them on your own in a few weeks.
 
 ## Useful Methods
 
@@ -54,7 +54,7 @@ Generally, the choices you want to randomly choose between aren't integers start
 
 It's a good idea to include that mapping in your pseudocode\!
 
-Then, you'll add code to your program to **map** the random value to the corresponding choice. For example:
+Once you have the pseudocode, you'll create the Java code that will **map** the random value to the corresponding choice. For example:
 
 ```
 // Flip a 2 sided coin  
