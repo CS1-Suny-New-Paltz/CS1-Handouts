@@ -32,14 +32,16 @@ For many of the assignments going forward, there will be new classes included in
 
 When in doubt, try out some code\! To start using a class, you first need to **construct** an instance of it. For example purposes, we'll consider the following class
 
+<hr>
+
 `class Goat`
 
-Constructor
+**Constructor**
 
 `public Goat(int age)`  
 Takes in the age in years of the goat
 
-Methods
+**Methods**
 
 `public void baa()`  
 Prints the noise the goat makes to the console
@@ -47,19 +49,21 @@ Prints the noise the goat makes to the console
 `public String getName()`  
 Returns the goat's name
 
+<hr>
 
-To construct a new goat, we'll need to call a constructor \- in this case, there's only one option, a constructor that has one parameter. To see exactly what a Goat object can do, we'll make a small program:
-
-`Goat exampleGoat = new Goat(1);`
-
-To start, this creates an exampleGoat of type Goat, where we're passing a value of '1' for the age of the goat in years. The variable name and age value here are for example purposes \- you could pick any name/age combo that you want.
+Based off the information here, we'll build a small sample program to see how this documentation works in practice.
 
 ## The **static** keyword
 
-You'll notice that unlike the methods we've been creating so far, the methods in the section above are **not static**. A **static** method is one that can run with just the information that's publically available from its parameters. On the other hand, if an object type has a method that depends on private, internal data related to that object, it will define a method that must be **called on a particular object**.
+You may have noticed that, while the methods we've created have all been `static`, none of the methods on any classes we've looked at (Random, Robot, Color, etc) have been static - the sample Goat class is no exception. A **static** method is one that can run with just the information that's publically available from its parameters; this makes it easy to call from `main` (which itself is static). However, if an object type has a method that depends on private, internal data related to that object, it will define a method that must be **called on a particular object**. 
 
 For example, the `isClear` method on the Robot class must be called on a specific Robot (such as Binky). Whether or not Binky is clear to move forward depends on where exactly he is in the world \- it doesn't really make sense to ask "are Robots, generally, clear to move forward?", but it does make sense to ask "is this specific Robot, Binky, clear to move forward?". When creating a new object type, the methods involved are usually **not static**, which means that in order to use them, a program first needs to create a **variable of that type**.
 
+To construct a new Goat, we'll need to call a constructor \- in this case, there's only one option, a constructor that has one parameter. To see exactly what a Goat object can do, we'll make a small program:
+
+`Goat exampleGoat = new Goat(1);`
+
+To start, this creates an exampleGoat of type Goat, where we're passing a value of '1' for the age of the goat in years. The variable name and age value here are for example purposes \- you could pick any name/age combo that you want. You'll notice this code uses the syntax template for creating a new object type - as we start using new classes more frequently, you'll want to make sure you have the **general syntax templates** in your notes for assignments and quizzes.
 
 ## Calling a Method
 
@@ -80,7 +84,7 @@ Interesting\! Now we have a sample of the sort of noise a Goat will make. Of cou
 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 ```
 
-That might change how we'd use the baa() method in a program (for example, adding a scroll bar or ellipses around it might make sense in the latter case, but not the former). Alternatively, the whole program might have crashed with
+that might change how we'd use the baa() method in a program (for example, adding a scroll bar or ellipses around it might make sense in the latter case, but not the former). Alternatively, the whole program might have crashed with
 
 ```
 InvalidGoatException: All goats must be at least 2 years old to baa
@@ -92,7 +96,7 @@ which would also provide some useful information about how to use the Goat class
 
 Suppose you were trying to write a program with the following goal: Simulate a small barnyard by having 3 goats all make noise one after another.
 
-Breaking this down into pseudocode, we could get:
+Breaking this down into pseudocode, we get:
 
 ```
 // Create 3 goats  
