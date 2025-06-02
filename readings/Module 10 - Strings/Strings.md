@@ -2,7 +2,7 @@
 
 ## Introduction
 
-While "text" doesn't sound like that interesting or complex of a topic at first, it turns out that Strings are one of the most powerful building blocks for programs. The underlying reason is a combination of the fact that any data can be represented in text form, and that data can be arbitrarily changed and updated by manipulating that text.
+While "text" doesn't sound like that interesting or complex of a topic at first, it turns out that Strings are one of the most powerful building blocks for programs: any data can be represented in text form, and that data can be arbitrarily changed and updated by manipulating that text. We'll go over some of the more common ways to use and manipulate Strings.
 
 ## The String class
 
@@ -22,7 +22,7 @@ Much like 'what is the sound of one hand clapping', 'what is text with no letter
 
 ## Converting to/from other types
 
-When converting between types, you'll use an appropriate **static method** for the type you're converting to. For example, to create an int, you'd use Integer.parseInt \- that method takes in a String as a parameter, and returns the corresponding int (assuming the String represented an integer in the first place). To convert any type of data (primitive or not) back to a String, use the method `String.valueOf`. This method is **overloaded** for every possible primitive and object type, so you can pass in any value and get the String representation back.
+When converting between types, you'll use an appropriate **static method** for the type you're converting to. For example, to create an int from a String, you'd use Integer.parseInt \- that method takes in a String as a parameter, and returns the corresponding int (assuming the String represented an integer in the first place). To convert any type of data (primitive or not) back to a String, use the method `String.valueOf`. This method is **overloaded** for every possible primitive and object type, so you can pass in any value and get the String representation back.
 
 For example:
 
@@ -40,7 +40,7 @@ String textVersion = String.valueOf(original);
 int convertedBack = Integer.parseInt(textVersion);
 ```
 
-## Immutable Objects
+## Working With Strings
 
 Strings in Java are what is known as **immutable** (or "not mutable"). A mutable object is one that can be changed (or "mutated"), so conversely, an immutable object is one where the **data can't change**. Specifically for object types, this means the data stored in the **pointee** cannot change \- the **pointer** can be updated to point to new, updated data. This means that for immutable objects, if you have two variables that both point to the same pointee, you don't have to worry about the data changing out from under you (unlike in the Binky Pointer Fun video, where updating the value stored in the pointee for x ended up changing the value for y as well). 
 
@@ -70,7 +70,7 @@ It's often helpful to "standardize" Strings for certain problems \- by default, 
 
 To avoid case sensitivity issues, you can convert strings to all upper (or all lower) case letters with toUpperCase() and toLowerCase() respectively \- while "The cat sat on the mat" doesn't contain the String "Cat", if both String objects are converted to lowercase versions ("the cat sat on the mat" and "cat"), now there is a match for the text being searched for.
 
-Removing whitespace usually happens when dealing with user or file input that might be a bit "messy". Recall our todo list example, with one task per line \- it would be easy to accidentally include a space at the end of one of the lines when creating the file, because as a person reading the text file, whitespace at the end of a line is invisible. The method trim() removes spaces, tabs, and newlines ("whitespace" characters because they show up as blank space \- traditionally, that space was white back before dark mode became a common feature) from the beginning or end of a String.For example, " Hello ".trim() would return the String "Hello". 
+Removing whitespace usually happens when dealing with user or file input that might be a bit "messy". Recall our todo list example, with one task per line \- it would be easy to accidentally include a space at the end of one of the lines when creating the file, because as a person reading the text file, whitespace at the end of a line is invisible. The method trim() removes spaces, tabs, and newlines ("whitespace" characters because they show up as blank space \- traditionally, that space was white back before dark mode became a common feature) from the beginning or end of a String. For example, " Hello ".trim() would return the String "Hello". 
 
 **Separating Strings**
 
@@ -110,7 +110,7 @@ int secondComma = example.indexOf(",", indexComma + 1);
 
 ## Combining Methods For Complex Programs
 
-Problem: Personalize a greeting \- take some greeting text "Hello World" or "Hi Jared" and replace the second word with your name (so for me, I'd change these to "Hello Katherine" or "Hi Katherine).
+Problem: Personalize a greeting \- take some greeting text "Hello World" or "Hi Person" and replace the second word with your name (so for me, I'd change these to "Hello Katherine" or "Hi Katherine).
 
 If you feel like this is ramping up the difficulty of problem solving, you're not wrong \- dealing with Strings (or eventually, any abstract data representation in code) involves adding another mental layer of abstraction to your programs. The best way to handle this is to stick with pseudo code as long as possible while describing your solution to the problem. For these sorts of problems, the trick is figuring out **how to break down the problem** in the first place \- once you solve that, the code writes itself!
 
