@@ -292,4 +292,3 @@ And we could build a small program to test it:
        }
    }
 ```
-```
