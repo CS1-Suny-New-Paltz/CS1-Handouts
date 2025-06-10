@@ -117,7 +117,7 @@ System.out.println(Arrays.toString(intArray)); // prints the array contents
 
 If you've ever wondered why everything in CS starts counting from 0, it's because of arrays. In memory, an array is a **contiguous block** \- each element is at the memory address right after the one before it. This isn't generally true of objects in memory \- generally, they can be created anywhere in the memory for a program. Arrays are contiguous not just in Java, but in all programming languages. Long ago (ah, the 80s, ancient history), it wasn't unusual for programmers to have to manage their pointers by hand \- if you want to see someone shudder, ask someone who's written a lot of code in C about "void stars" (written void\*). For an array, the pointer stores the memory address of the **first** element in the array:
 
-<img src="images/arrayPtr.png" alt="Array Memory" >
+<img src="images/arrayPtr.png" alt="Array Memory" width="50%" >
 
 (Addresses given in decimal despite the hex notation for readability). 
 
@@ -127,7 +127,7 @@ As we saw when initializing the array, it's convenient to have the loop bounds a
 
 ## Array Example
 
-<img align="right" src="images/shoeRack.jpg" alt="Shoe Rack" >
+<img align="right" src="images/shoeRack.jpg" alt="Shoe Rack" width="50%" >
 
 Let's look at an example class that uses an array: a ShoeRack class that can hold a fixed number of shoes. A given ShoeRack might hold 3, 5, 7 or any other number of shoes, but once it's been created, that number is fixed \- to get more space for shoes, you'd need to create another shoe rack. For our purposes (and to get a little more practice with classes), we'll also create a Shoe class that has an integer size and a String for the model.
 
