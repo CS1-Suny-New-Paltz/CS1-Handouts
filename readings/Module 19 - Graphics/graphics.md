@@ -38,7 +38,113 @@ The action listener specifies two things:
 
 ## Example Program
 
+Let's consider the following program that pulls a rabbit out of a hat.
+
+```
+public class SampleProgram {
+
+    public static void main(String[] args) {
+        // Create an outer frame for the program
+        CS1Frame frame = new CS1Frame("Demo", 300, 300);
+        
+        // TODO: rabbit magic
+        
+        // Once everything's set up, remember to make it visible!
+        frame.setVisible();
+    }
+}
+```
+
+The first thing that the program does is create an outer **frame** that will contain all the components. The `setVisible` method will handle drawing all the initial components, so you should only call it once all the components have been added to the frame. Right now, we haven't added any components, so the program looks pretty boring:
+
+<img src="images/demo1.png" width="30%">
+
+Now, let's add an initial image of an empty magic hat:
 
 
+```
+public class SampleProgram {
 
+    public static void main(String[] args) {
+        // Create an outer frame for the program
+        CS1Frame frame = new CS1Frame("Demo", 300, 300);
 
+        // Add an initial image
+        CS1Image image = new CS1Image("magicHatEmpty.png");
+        image.setBounds(0, 0, 100, 150);
+        frame.add(image);
+        
+        // TODO: rabbit magic
+        
+        // Once everything's set up, remember to make it visible!
+        frame.setVisible();
+    }
+}
+```
+
+Here, we create the **image component** and give it the initial image to display. Next, we specify a size and location: 100 pixels wide, 150 pixels tall, and with an upper left corner that's 0 pixels down and 0 pixels over from the upper left of the frame. Finally, we add the component. Choosing the right pixel settings is often a matter of trial and error - choose something plausible, run the program, see if it looks good, and if not, adjust the values. Now we have a hat, but no bunny:
+
+We want the bunny to appear when the user clicks a button, so let's add a button to handle the magic:
+
+```
+public class SampleProgram {
+
+    public static void main(String[] args) {
+        // Create an outer frame for the program
+        CS1Frame frame = new CS1Frame("Demo", 300, 300);
+        
+        // Add an initial image
+        CS1Image image = new CS1Image("magicHatEmpty.png");
+        image.setBounds(0, 0, 100, 150);
+        frame.add(image);
+        
+        // Add a button
+        JButton button = new JButton("Click me!");
+        button.setBounds(100, 0, 100, 30);
+        frame.add(button);
+        
+        // Once everything's set up, remember to make it visible!
+        frame.setVisible();
+    }
+}
+```
+
+Much like with the image, we create a component, set its bounds, and add it to the frame. This button will still be at the top of the screen, but 100 pixels over from the top left, which should put it right next to the hat:
+
+For the final part of the trick, we want the image to change when the user clicks the button, which requires an action listener:
+
+```
+public class SampleProgram {
+
+    public static void main(String[] args) {
+        // Create an outer frame for the program
+        CS1Frame frame = new CS1Frame("Demo", 300, 300);
+        
+        // Add an initial image
+        CS1Image image = new CS1Image("magicHatEmpty.png");
+        image.setBounds(0, 0, 100, 150);
+        frame.add(image);
+        
+        // Add a button
+        JButton button = new JButton("Click me!");
+        button.setBounds(100, 0, 100, 30);
+        frame.add(button);
+        
+        // Add an Action Listener: when the button is pressed,
+        // run the code in the inner curly braces
+        button.addActionListener(e -> {
+            // any code in here runs whenever the button is pressed
+            image.setImage("magicHatBunny.png");
+        });
+        
+        // Once everything's set up, remember to make it visible!
+        frame.setVisible();
+    }
+}
+```
+
+When the user takes an action with the button, the code we provide will run. For buttons, this is simple - the only action that buttons support is being clicked. With more complex action listeners, you may have to check what event actually happened - that information is stored in the variable `e`. In this case, though, we can just say that any click of the button should change the image to the bunny.
+
+Now, after the user clicks the button, they'll see:
+
+Feel free to try this yourself! Copy the above code into Eclipse, and download the two png files from the images/ folder on the left into a folder called `resources` in your Eclipse project, and give it a whirl.
