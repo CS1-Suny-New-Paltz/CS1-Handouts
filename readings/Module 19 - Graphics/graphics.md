@@ -84,6 +84,8 @@ public class SampleProgram {
 
 Here, we create the **image component** and give it the initial image to display. Next, we specify a size and location: 100 pixels wide, 150 pixels tall, and with an upper left corner that's 0 pixels down and 0 pixels over from the upper left of the frame. Finally, we add the component. Choosing the right pixel settings is often a matter of trial and error - choose something plausible, run the program, see if it looks good, and if not, adjust the values. Now we have a hat, but no bunny:
 
+<img src="images/demo2.png" width="30%">
+
 We want the bunny to appear when the user clicks a button, so let's add a button to handle the magic:
 
 ```
@@ -110,6 +112,8 @@ public class SampleProgram {
 ```
 
 Much like with the image, we create a component, set its bounds, and add it to the frame. This button will still be at the top of the screen, but 100 pixels over from the top left, which should put it right next to the hat:
+
+<img src="images/demo3.png" width="30%">
 
 For the final part of the trick, we want the image to change when the user clicks the button, which requires an action listener:
 
@@ -146,5 +150,7 @@ public class SampleProgram {
 When the user takes an action with the button, the code we provide will run. For buttons, this is simple - the only action that buttons support is being clicked. With more complex action listeners, you may have to check what event actually happened - that information is stored in the variable `e`. In this case, though, we can just say that any click of the button should change the image to the bunny.
 
 Now, after the user clicks the button, they'll see:
+
+<img src="images/demo4.png" width="30%">
 
 Feel free to try this yourself! Copy the above code into Eclipse, and download the two png files from the images/ folder on the left into a folder called `resources` in your Eclipse project, and give it a whirl.
