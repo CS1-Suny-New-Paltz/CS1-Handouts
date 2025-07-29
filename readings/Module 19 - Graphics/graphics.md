@@ -8,7 +8,7 @@ Computer graphics are an entire field by themselves, with a large number of fram
 
 The first part of creating graphics for a program is to decide on the pieces, or **components**, of the visual and interactive parts of the program. This might be something as simple as "a red circle", or as complex as "an auto-scrolling image gallery". Each component should be able to function independently of other components - a red circle doesn't need to know if there's also an image gallery on the screen. Much like instance variables in classes allow you to nest one class within another, it's possible to nest smaller components within larger components to build more complex visuals.
 
-We'll be using a couple of components for this course, some of which are built in to Swing, and some of which are simplified wrappers around Swing components. As a general rule, if a component name starts with a capital 'J', it's built into **J**ava Swing; if it starts with 'CS1', it's a wrapper for this class. 
+We'll be using a couple of components for this course which are simplified wrappers around Swing components - you can spot these classes because the names all start with 'CS1'.
 
 ## Layout
 
@@ -55,19 +55,19 @@ Methods that work for any **component** (any of the following except CS1Frame):
 
 `public void setBackground(Color color)` - this method makes the 'foreground' naming make more sense, it sets the background behind any text
 
-**JLabel**
+**CS1Label**
 
 Creates text on the screen
 
-`public JLabel(String text)` - creates a label with the specified text
+`public CS1Label(String text)` - creates a label with the specified text
 
 `public void setText(String newText)` - updates the text for the label
 
-**JButton**
+**CS1Button**
 
 Creates a clickable button
 
-`public JButton(String text)` - creates a button with the specified text
+`public CS1Button(String text)` - creates a button with the specified text
 
 `public void setText(String newText)` - updates the text for the button
 
@@ -87,7 +87,7 @@ Displays an image file
 
 **CS1Frame**
 
-`public void add(Component c)` - adds any component (such as a CS1Image or JLabel) to the program's visible frame
+`public void add(Component c)` - adds any component (such as a CS1Image or CS1Label) to the program's visible frame
 
 `public void setVisible()` - call this after adding all the components to get the program to actually display
 
@@ -156,7 +156,7 @@ public class SampleProgram {
         frame.add(image);
         
         // Add a button
-        JButton button = new JButton("Click me!");
+        CS1Button button = new CS1Button("Click me!");
         button.setBounds(100, 0, 100, 30);
         frame.add(button);
         
@@ -185,7 +185,7 @@ public class SampleProgram {
         frame.add(image);
         
         // Add a button
-        JButton button = new JButton("Click me!");
+        CS1Button button = new CS1Button("Click me!");
         button.setBounds(100, 0, 100, 30);
         frame.add(button);
         
