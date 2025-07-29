@@ -48,23 +48,7 @@ ____________________________.addActionListener(e -> {
 ## Specific Classes
 
 
-**JButton**
-
-This class creates a clickable button.
-
-**Constructor**
-
-`public JButton(String buttonText)` - creates a new button with the text `buttonText`. For example, `new JButton("OK")` would create a button with the text "OK".
-
-**Methods**
-
-There are many methods on JButton, but the three that we are going to use are:
-
-`public void setBounds(int x, int y, int width, int height)` - this determines **where on the screen** the button will display.
-
-`public void addActionListener(ActionListener listener)` - specifies some code to run when the button is clicked
-
-`public void setText(String newButtonText)` - updates the text for the button
+**JLabel**
 
 
 **JTextField**
@@ -75,6 +59,10 @@ There are many methods on JButton, but the three that we are going to use are:
 Allows a program to display an image file
 
 **CS1Frame**
+
+**CS1UserInput**
+
+also setForeground/setColor?
 
 
 ## Example Program
