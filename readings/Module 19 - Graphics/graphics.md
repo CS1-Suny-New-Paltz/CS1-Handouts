@@ -47,23 +47,35 @@ ____________________________.addActionListener(e -> {
 
 ## Specific Classes
 
+Methods that work for any **component** (any of the following except CS1Frame):
+
+public void setBounds
+public void setForeground
+public void setColor
 
 **JLabel**
 
+setText
 
-**JTextField**
+**JButton**
 
+setText
+addActionListener
 
 **CS1Image**
 
 Allows a program to display an image file
 
-**CS1Frame**
+setImage
 
 **CS1UserInput**
 
-also setForeground/setColor?
+getUserInput
 
+**CS1Frame**
+
+add
+setVisible
 
 ## Example Program
 
