@@ -10,11 +10,6 @@ The first part of creating graphics for a program is to decide on the pieces, or
 
 We'll be using a couple of components for this course, some of which are built in to Swing, and some of which are simplified wrappers around Swing components. As a general rule, if a component name starts with a capital 'J', it's built into **J**ava Swing; if it starts with 'CS1', it's a wrapper for this class. 
 
-JButton
-JTextField
-CS1Image
-
-
 ## Layout
 
 Once you have several components, the next part of creating graphics is deciding how the components will **be laid out on the screen**. For example, if you have a red circle and an image gallery, does the circle go on the left of the gallery, or above/below/to the right? Perhaps you want to add an animation so that one component moves across another! The **layout** for the graphics determines where each component goes in relation to all the others.
@@ -23,7 +18,9 @@ We'll be using an extremely simplified version where you specify the location of
 
 To specify the layout of a component, we'll use a method that's defined on all the components:
 
-setBounds
+`setBounds(int x, int y, int width, int height)`
+
+This method specifies the (x,y) of the upper left of the component, along with the width and height, all of which are measured in pixels.
 
 ## Action Listeners
 
@@ -35,6 +32,50 @@ The action listener specifies two things:
 - What **code should run** (ie, what action to take) when the event happens
 
 **Syntax**
+
+We'll be using **lambda syntax** to specify the action listener - it looks a bit unusual, but minimizes the amount of extra syntax surrounding your code:
+
+```
+____________________________.addActionListener(e -> {
+(name of component variable)
+      _________________________________;
+      (what code should run when the event takes place; can be multiple lines of code)
+});
+```
+
+`e` in this case is actually a parameter, although you'll notice no type is explicitly specified - if you look at the javadoc for addActionListener, you can find where the type of e is defined (it's a parameter of type ActionEvent). Lambdas don't require restating that type definition - this is unusual for Java, but very convenient in cases where you often won't use the parameter at all. For the components we'll be using, we won't ever use the parameter `e`.
+
+## Specific Classes
+
+
+**JButton**
+
+This class creates a clickable button.
+
+**Constructor**
+
+`public JButton(String buttonText)` - creates a new button with the text `buttonText`. For example, `new JButton("OK")` would create a button with the text "OK".
+
+**Methods**
+
+There are many methods on JButton, but the three that we are going to use are:
+
+`public void setBounds(int x, int y, int width, int height)` - this determines **where on the screen** the button will display.
+
+`public void addActionListener(ActionListener listener)` - specifies some code to run when the button is clicked
+
+`public void setText(String newButtonText)` - updates the text for the button
+
+
+**JTextField**
+
+
+**CS1Image**
+
+Allows a program to display an image file
+
+**CS1Frame**
+
 
 ## Example Program
 
