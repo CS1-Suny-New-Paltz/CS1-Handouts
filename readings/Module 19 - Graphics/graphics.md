@@ -49,33 +49,47 @@ ____________________________.addActionListener(e -> {
 
 Methods that work for any **component** (any of the following except CS1Frame):
 
-public void setBounds
-public void setForeground
-public void setColor
+`public void setBounds(int x, int y, int width, int height)` - determines where the component will display in the frame. The component's upper left corner will be at (x,y) with the specified width and height
+
+`public void setForeground(Color color)` - an unfortunately named method, this will set the color of any **text** on the component. 
+
+`public void setBackground(Color color)` - this method makes the 'foreground' naming make more sense, it sets the background behind any text
 
 **JLabel**
 
-setText
+Creates text on the screen
+
+`public JLabel(String text)` - creates a label with the specified text
+
+`public void setText(String newText)` - updates the text for the label
 
 **JButton**
 
-setText
-addActionListener
+Creates a clickable button
+
+`public JButton(String text)` - creates a button with the specified text
+
+`public void setText(String newText)` - updates the text for the button
+
+`public void addActionListener(ActionListener lambda)` - allows you to specify what code to run when the button is pressed
 
 **CS1Image**
 
-Allows a program to display an image file
+Displays an image file
 
-setImage
+`public CS1Image(String filePath)` - accepts the name or relative path to an image **in the resources folder of the project**
+
+`public void setImage(String newPath)` - updates the image to the contents of the new file
 
 **CS1UserInput**
 
-getUserInput
+`public String getUserInput()` - prompts the user for text input and returns it
 
 **CS1Frame**
 
-add
-setVisible
+`public void add(Component c)` - adds any component (such as a CS1Image or JLabel) to the program's visible frame
+
+`public void setVisible()` - call this after adding all the components to get the program to actually display
 
 ## Example Program
 
