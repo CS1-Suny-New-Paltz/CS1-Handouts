@@ -191,7 +191,7 @@ public class SampleProgram {
         
         // Add an Action Listener: when the button is pressed,
         // run the code in the inner curly braces
-        button.addMouseClickLogic(e -> {
+        button.addMouseClickLogic(() -> {
             // any code in here runs whenever the button is pressed
             image.setImage("magicHatBunny.png");
         });
@@ -202,7 +202,7 @@ public class SampleProgram {
 }
 ```
 
-When the user takes an action with the button, the code we provide will run. For buttons, this is simple - the only action that buttons support is being clicked. With more complex action listeners, you may have to check what event actually happened - that information is stored in the variable `e`. In this case, though, we can just say that any click of the button should change the image to the bunny.
+When the user takes the specified action with the button (ie, clicks it with their moue), the code we provide will run.
 
 Now, after the user clicks the button, they'll see:
 
