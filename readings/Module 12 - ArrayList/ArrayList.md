@@ -112,3 +112,5 @@ for (String element : list) {
    // do something with element  
 }
 ```
+
+The ':' can be roughly read as meaning 'in', so the shorthand loop says "For each String (call it element) **in** list, do something with element"
