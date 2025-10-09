@@ -223,8 +223,8 @@ public static void main(String[] args) {
   Student spring25Ta = new Student("Jared");  
   Student fall24Ta = new Student("Sanket");  
   spring25Ta .enrollInClass();  
-  System.out.println(spring25Ta + " is enrolled in " + spring25Ta.getNumClasses() + " class(es)");**  
-  System.out.println(fall24Ta + " is enrolled in " + fall24Ta.getNumClasses() + " class(es)");**  
+  System.out.println(spring25Ta + " is enrolled in " + spring25Ta.getNumClasses() + " class(es)");  
+  System.out.println(fall24Ta + " is enrolled in " + fall24Ta.getNumClasses() + " class(es)");  
 }
 ```
 

@@ -20,53 +20,42 @@ Reading a file comes in two parts: moving the underlying bits from the hard driv
 
 ## File Reading Libraries
 
-In Java, there are a **lot** of different ways to read a file, all of which have their own pros and cons. For this class specifically, we’re going to use a class called **BufferedReader**, which is a nice general-purpose text file reading library \- you can safely use it to read any text file, with no fine-print caveats. Internet resources may suggest other options (such as Scanner), but for assignments and quizzes, you'll need to use BufferedReader. If you're curious about the pros and cons of a given alternative way of reading files, feel free to stop by office hours or send an email! While it's outside the scope of this class, I'm always happy to talk through some of the more advanced aspects of software design. The tl;dr of the pros and cons are that there are many ways of reading files that work well in certain specific cases, but fail horribly in other cases - BufferedReader doesn't have any "fail horribly" cases, so it's a good default to use.
+In Java, there are a **lot** of different ways to read a file, all of which have their own pros and cons. For this class specifically, we’re going to use a custom class called **CS1Reader**, which is a nice general-purpose text file reading library \- you can safely use it to read any text file, with no fine-print caveats. Internet resources may suggest other options (such as Scanner), but for assignments and quizzes, you'll need to use either the CS1Reader or the closely-related class, BufferedReader. If you're curious about the pros and cons of a given alternative way of reading files, feel free to stop by office hours or send an email! While it's outside the scope of this class, I'm always happy to talk through some of the more advanced aspects of software design. The tl;dr of the pros and cons are that there are many ways of reading files that work well in certain specific cases, but fail horribly in other cases - CS1Reader and BufferedReader don't have any "fail horribly" cases, so they're good defaults to use.
 
-## BufferedReader Javadoc
+If you look at the source code for CS1Reader, you'll notice there's not much there - a CS1Reader is a very thin wrapper around a BufferedReader. BufferedReader is fairly old (it was first created in 1996), so it has some syntactic quirks that more modern Java code avoids. Once we cover Exceptions, you'll have all the information you need to use a BufferedReader directly, but you can choose to continue using the CS1Reader if you prefer (it makes the code a bit cleaner). Outside of CS1, you'll have to use BufferedReader or some more specialized class (or you can recreate your own custom wrapper!)
 
-If you haven’t read the handout on Javadocs, go check that out first. The link for the full javadoc for BufferedReader is: [BufferedReader Javadoc](https://docs.oracle.com/javase/8/docs/api/java/io/BufferedReader.html)   
-We’ll be using a subset of the constructors and methods: specifically, we’ll always use the constructor that takes a Reader, and the method readLine(). For reading from files, the constructor call will always look like:
+## CS1Reader Javadoc
+
+Note: The link for the full javadoc for BufferedReader is: [BufferedReader Javadoc](https://docs.oracle.com/javase/8/docs/api/java/io/BufferedReader.html)  
+
+CS1Reader provides a useful subset of BufferedReader functionality, where you can set it up to read from either a file or the console (the counterpart to System.out is called System.in). For now, we'll just look at file reading:
 
 ```
-BufferedReader _______________ = new BufferedReader(new FileReader(______________));  
-              (name of variable)			       (name of file as String)
+CS1Reader _______________ = new CS1Reader(______________);  
+         (name of variable)			       (name of file as String)
 ```
 
 For example:
 
 ```
-BufferedReader binkyWorldReader = new BufferedReader(new FileReader(“default.world”));
+CS1Reader binkyWorldReader = new CS1Reader(“default.world”);
 ```
 
-The readLine() method has two interesting features that we haven’t seen before: it can **throw an exception** and it has a **sentinel value** as a possible return value.
-
-## Throwing an Exception
-
-We’ve already seen Exceptions \- if Binky runs into a wall, that throws an exception and causes the program to crash. Binky throws what are called **unchecked Exceptions**, which don’t require a program to use any special syntax \- if the exception is thrown, the program will crash, but otherwise it runs normally. Some types of exceptions in Java are known as **checked Exceptions**. These, sadly, are one of those mistakes of the past that we’re still living with today \- they largely introduce extra syntax for no benefit. Newer code written in Java will generally use unchecked Exceptions, but file reading has been around for a long time, so it still has this vestigial syntax. When a method throws a checked exception, any code that calls that method must either **catch** the exception, or declare that it will **re-throw** the exception. For the moment, we’ll just always re-throw \- this involves adding
-
-`throws IOException`
-   
-or
-  
-`throws Exception`
-
-to any of the methods involved, just after the parentheses in the method signature. For example:
+To actually read in data, you'll read in one line at a time, returned as a String from the readLine() method:
 
 ```
-public static void main(String[] args) throws IOException {  
-  // code goes here  
-}
+   String firstLine = reader.readLine();
 ```
 
-We’ll talk about catching exceptions (checked or unchecked) when we get to error handling.
+The readLine() method has an interesting feature that we haven’t seen before: it has a **sentinel value** as a possible return value.
 
 ## Sentinel Values
 
 Normally, the return value for a method can be treated as an “answer to a question”: isClear() returns true or false depending on whether there’s a wall in front of Binky, getSquareColor() returns a Color corresponding to the color of the square Binky is standing on, etc. Sometimes, though, the answer to a question includes a “does not apply” response \- this can be represented as a **sentinel value**. It’s important to note that sentinel values are not part of Java syntax \- they’re strictly part of the semantics of using a method. This makes them tricky, since you as the programmer have to find out about them from the Javadoc and then remember to check them yourself in your code.
 
-`readLine()` in BufferedReader is an example of using a sentinel value. This method will return the next line of text in a file, or, if the end of the file has been reached and there is no next line, it will return a special value that we saw in the context of pointers: `null`. Null is a possible value for any object type; in the context of pointers, we saw that it's the value of a pointer when there is no pointee. Semantically, it's often used to mean “there is no value for this variable”. Checking for `null` is one of the few times that you can safely use \== with an object. 
+`readLine()` in CS1Reader is an example of using a sentinel value. This method will return the next line of text in a file, or, if the end of the file has been reached and there is no next line, it will return a special value that we saw in the context of pointers: `null`. Null is a possible value for any object type; in the context of pointers, we saw that it's the value of a pointer when there is no pointee. Semantically, it's often used to mean “there is no value for this variable”. Checking for `null` is one of the few times that you can safely use \== with an object. 
 
-In the context of `readLine()`, the question being asked is “What String stores the next line of text in the file?”, and the answer is a pointer to a specific String object. But if there is no next line of text, the question is more accurately answered with “does not apply, there is no next line of text in the file” \- here, `null` is chosen as the sentinel value to represent that answer. 
+In the context of `readLine()`, the question being asked is “What String stores the next line of text in the file?”, and the answer is a pointer to a specific String object. But if there is no next line of text, the question is more accurately answered with “does not apply, there is no next line of text in the file” \- here, `null` is chosen as the sentinel value to represent that answer.
 
 Sentinel values are **fundamentally arbitrary**; this is why they must be documented in the javadoc, because there’s no way to infer them otherwise. Null is a common sentinel value, but it’s not the only one \- the only requirements of a sentinel value are that it not be a possible **actual answer** to the question the method is asking, and that it’s of the correct **type**. For example, if you had a method that counted the number of breadcrumbs on the square in front of the one Binky is on, you might use \-1 as a sentinel value to represent the case where Binky is facing a wall. This is a good situation for a sentinel, since if Binky is facing a wall, there is no “square in front of this one”, and the question doesn’t apply. \-1 is never a valid answer to “how many breadcrumbs are on this square”, so it’s acceptable as a sentinel value, but you could just as easily choose \-2, \-10, or some other value. However, you couldn’t use 0 as a sentinel value, because that’s a possible valid answer, and you couldn’t use the String “Not valid” either, as that’s not the correct type (if the method returns an int, the sentinel must also be an int).
 

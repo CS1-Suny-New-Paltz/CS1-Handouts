@@ -2,7 +2,7 @@
 
 ## Introduction
 
-Variables are a powerful tool for making large programs easier to write and reason about. However, they work a bit differently in programs than they do in a mathematical context \- while  a mathematical variable often shows up as 'solve for x in the following equation', in a programming context, not only do you get to decide what value variable x starts as, but you can change, or **vary** what value it has over the course of the program.
+Variables are a powerful tool for making large programs easier to write and reason about. However, they work a bit differently in programs than they do in a mathematical context \- while  a mathematical variable often shows up as 'solve for x in the following equation', in a programming context, not only do you get to decide what value variable x starts as, but you can change, or **vary**, what value it has over the course of the program.
 
 ## Variable syntax
 
@@ -78,7 +78,7 @@ The pseudo code looks like:
 
 ```
 // Until Binky reaches a wall  
-// Check what color square Binky is standing on \- call it squareColor  
+// Check what color square Binky is standing on - call it squareColor  
 // if squareColor is equal to gray, change the square to white  
 // if squareColor is equal to white, change the square to blue  
 // Move to the next square
