@@ -202,7 +202,7 @@ public class SampleProgram {
 }
 ```
 
-When the user takes the specified action with the button (ie, clicks it with their moue), the code we provide will run.
+When the user takes the specified action with the button (ie, clicks it with their mouse), the code we provide will run.
 
 Now, after the user clicks the button, they'll see:
 
