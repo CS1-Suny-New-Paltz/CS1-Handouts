@@ -8,13 +8,13 @@ Computer graphics are an entire field by themselves, with a large number of fram
 
 The first part of creating graphics for a program is to decide on the pieces, or **components**, of the visual and interactive parts of the program. This might be something as simple as "a red circle", or as complex as "an auto-scrolling image gallery". Each component should be able to function independently of other components - a red circle doesn't need to know if there's also an image gallery on the screen. Much like instance variables in classes allow you to nest one class within another, it's possible to nest smaller components within larger components to build more complex visuals.
 
-We'll be using a couple of components for this course, some of which are built in to Swing, and some of which are simplified wrappers around Swing components. As a general rule, if a component name starts with a capital 'J', it's built into **J**ava Swing; if it starts with 'CS1', it's a wrapper for this class. 
+We'll be using a couple simplified components for this course, all of which have names that start with 'CS1' - if you need to list them, ctrl+shift+T in Eclipse will let you search for 'CS1' as a prefix.
 
 ## Layout
 
 Once you have several components, the next part of creating graphics is deciding how the components will **be laid out on the screen**. For example, if you have a red circle and an image gallery, does the circle go on the left of the gallery, or above/below/to the right? Perhaps you want to add an animation so that one component moves across another! The **layout** for the graphics determines where each component goes in relation to all the others.
 
-We'll be using an extremely simplified version where you specify the location of a component on the screen in (x,y) coordinates in terms of pixels. This is fairly easy to work with for learning purposes, but not actually a good idea for any real world program: since everyone uses a different computer with different screen sizes and resolutions, specifying locations in terms of absolute pixels tends to work poorly for programs that need to run on phones, tables, overhead projectors, laptops, and desktop monitors. More commonly, a layout manager will allow you to specify fractional positions and relative sizes of components - if you take any additional graphics courses, you'll get to see these types of layouts.
+We'll be using an extremely simplified version where you specify the location of a component on the screen in (x,y) coordinates in terms of pixels. This is fairly easy to work with for learning purposes, but not actually a good idea for any real world program: since everyone uses a different computer with different screen sizes and resolutions, specifying locations in terms of absolute pixels tends to work poorly for programs that need to run on phones, tablets, overhead projectors, laptops, and desktop monitors. More commonly, a layout manager will allow you to specify fractional positions and relative sizes of components - if you take any additional graphics courses, you'll get to see these types of layouts.
 
 To specify the layout of a component, we'll use a method that's defined on all the components:
 
@@ -33,7 +33,7 @@ The action listener specifies two things:
 
 **Syntax**
 
-We'll be using **lambda syntax** to specify the action listener - it looks a bit unusual, but minimizes the amount of extra syntax surrounding your code:
+We'll be using **lambda syntax** to specify the code to run - it looks a bit unusual, but minimizes the amount of extra syntax surrounding your code:
 
 ```
 ____________________________.addActionListener(e -> {
@@ -43,7 +43,9 @@ ____________________________.addActionListener(e -> {
 });
 ```
 
-`e` in this case is actually a parameter, although you'll notice no type is explicitly specified - if you look at the javadoc for addActionListener, you can find where the type of e is defined (it's a parameter of type ActionEvent). Lambdas don't require restating that type definition - this is unusual for Java, but very convenient in cases where you often won't use the parameter at all. For the components we'll be using, we won't ever use the parameter `e`.
+TODO: make a CS1ActionListener without the mouse event param
+
+For our purposes, we'll specify the event type by calling a specific method (addMouseEventCode, addTextBoxCode, etc).
 
 ## Specific Classes
 
@@ -55,19 +57,19 @@ Methods that work for any **component** (any of the following except CS1Frame):
 
 `public void setBackground(Color color)` - this method makes the 'foreground' naming make more sense, it sets the background behind any text
 
-**JLabel**
+**CS1Label**
 
 Creates text on the screen
 
-`public JLabel(String text)` - creates a label with the specified text
+`public CS1Label(String text)` - creates a label with the specified text
 
 `public void setText(String newText)` - updates the text for the label
 
-**JButton**
+**CS1Button**
 
 Creates a clickable button
 
-`public JButton(String text)` - creates a button with the specified text
+`public CS1Button(String text)` - creates a button with the specified text
 
 `public void setText(String newText)` - updates the text for the button
 
@@ -87,7 +89,7 @@ Displays an image file
 
 **CS1Frame**
 
-`public void add(Component c)` - adds any component (such as a CS1Image or JLabel) to the program's visible frame
+`public void add(Component c)` - adds any component (such as a CS1Image or CS1Label) to the program's visible frame
 
 `public void setVisible()` - call this after adding all the components to get the program to actually display
 
@@ -156,7 +158,7 @@ public class SampleProgram {
         frame.add(image);
         
         // Add a button
-        JButton button = new JButton("Click me!");
+        CS1Button button = new CS1Button("Click me!");
         button.setBounds(100, 0, 100, 30);
         frame.add(button);
         
@@ -185,7 +187,7 @@ public class SampleProgram {
         frame.add(image);
         
         // Add a button
-        JButton button = new JButton("Click me!");
+        CS1Button button = new CS1Button("Click me!");
         button.setBounds(100, 0, 100, 30);
         frame.add(button);
         
