@@ -8,13 +8,13 @@ Computer graphics are an entire field by themselves, with a large number of fram
 
 The first part of creating graphics for a program is to decide on the pieces, or **components**, of the visual and interactive parts of the program. This might be something as simple as "a red circle", or as complex as "an auto-scrolling image gallery". Each component should be able to function independently of other components - a red circle doesn't need to know if there's also an image gallery on the screen. Much like instance variables in classes allow you to nest one class within another, it's possible to nest smaller components within larger components to build more complex visuals.
 
-We'll be using a couple of components for this course which are simplified wrappers around Swing components - you can spot these classes because the names all start with 'CS1'.
+We'll be using a couple simplified components for this course, all of which have names that start with 'CS1' - if you need to list them, ctrl+shift+T in Eclipse will let you search for 'CS1' as a prefix.
 
 ## Layout
 
 Once you have several components, the next part of creating graphics is deciding how the components will **be laid out on the screen**. For example, if you have a red circle and an image gallery, does the circle go on the left of the gallery, or above/below/to the right? Perhaps you want to add an animation so that one component moves across another! The **layout** for the graphics determines where each component goes in relation to all the others.
 
-We'll be using an extremely simplified version where you specify the location of a component on the screen in (x,y) coordinates in terms of pixels. This is fairly easy to work with for learning purposes, but not actually a good idea for any real world program: since everyone uses a different computer with different screen sizes and resolutions, specifying locations in terms of absolute pixels tends to work poorly for programs that need to run on phones, tables, overhead projectors, laptops, and desktop monitors. More commonly, a layout manager will allow you to specify fractional positions and relative sizes of components - if you take any additional graphics courses, you'll get to see these types of layouts.
+We'll be using an extremely simplified version where you specify the location of a component on the screen in (x,y) coordinates in terms of pixels. This is fairly easy to work with for learning purposes, but not actually a good idea for any real world program: since everyone uses a different computer with different screen sizes and resolutions, specifying locations in terms of absolute pixels tends to work poorly for programs that need to run on phones, tablets, overhead projectors, laptops, and desktop monitors. More commonly, a layout manager will allow you to specify fractional positions and relative sizes of components - if you take any additional graphics courses, you'll get to see these types of layouts.
 
 To specify the layout of a component, we'll use a method that's defined on all the components:
 
@@ -33,17 +33,17 @@ The action listener specifies two things:
 
 **Syntax**
 
-We'll be using **lambda syntax** to specify the action listener - it looks a bit unusual, but minimizes the amount of extra syntax surrounding your code:
+We'll be using **lambda syntax** to specify the code to run - it looks a bit unusual, but minimizes the amount of extra syntax surrounding your code:
 
 ```
-____________________________.addActionListener(e -> {
+____________________________.addMouseClickLogic(() -> {
 (name of component variable)
       _________________________________;
-      (what code should run when the event takes place; can be multiple lines of code)
+      (what code should run when the mouse click takes place; can be multiple lines of code)
 });
 ```
 
-`e` in this case is actually a parameter, although you'll notice no type is explicitly specified - if you look at the javadoc for addActionListener, you can find where the type of e is defined (it's a parameter of type ActionEvent). Lambdas don't require restating that type definition - this is unusual for Java, but very convenient in cases where you often won't use the parameter at all. For the components we'll be using, we won't ever use the parameter `e`.
+For our purposes, we'll specify the event type by calling a specific method, usually 'addMouseClickLogic'. Later in the semester we might introduce an 'addTextBoxSubmitLogic' or similar.
 
 ## Specific Classes
 
@@ -71,7 +71,7 @@ Creates a clickable button
 
 `public void setText(String newText)` - updates the text for the button
 
-`public void addActionListener(ActionListener lambda)` - allows you to specify what code to run when the button is pressed
+`public void addMouseClickLogic(MouseClick code)` - allows you to specify what code to run when the button is pressed
 
 **CS1Image**
 
@@ -191,7 +191,7 @@ public class SampleProgram {
         
         // Add an Action Listener: when the button is pressed,
         // run the code in the inner curly braces
-        button.addActionListener(e -> {
+        button.addMouseClickLogic(e -> {
             // any code in here runs whenever the button is pressed
             image.setImage("magicHatBunny.png");
         });
