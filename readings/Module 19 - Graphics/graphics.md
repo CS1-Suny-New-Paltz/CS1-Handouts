@@ -36,16 +36,14 @@ The action listener specifies two things:
 We'll be using **lambda syntax** to specify the code to run - it looks a bit unusual, but minimizes the amount of extra syntax surrounding your code:
 
 ```
-____________________________.addActionListener(e -> {
+____________________________.addMouseClickLogic(() -> {
 (name of component variable)
       _________________________________;
-      (what code should run when the event takes place; can be multiple lines of code)
+      (what code should run when the mouse click takes place; can be multiple lines of code)
 });
 ```
 
-TODO: make a CS1ActionListener without the mouse event param
-
-For our purposes, we'll specify the event type by calling a specific method (addMouseEventCode, addTextBoxCode, etc).
+For our purposes, we'll specify the event type by calling a specific method, usually 'addMouseClickLogic'. Later in the semester we might introduce an 'addTextBoxSubmitLogic' or similar.
 
 ## Specific Classes
 
@@ -73,7 +71,7 @@ Creates a clickable button
 
 `public void setText(String newText)` - updates the text for the button
 
-`public void addActionListener(ActionListener lambda)` - allows you to specify what code to run when the button is pressed
+`public void addMouseClickLogic(MouseClick code)` - allows you to specify what code to run when the button is pressed
 
 **CS1Image**
 
@@ -193,7 +191,7 @@ public class SampleProgram {
         
         // Add an Action Listener: when the button is pressed,
         // run the code in the inner curly braces
-        button.addActionListener(e -> {
+        button.addMouseClickLogic(e -> {
             // any code in here runs whenever the button is pressed
             image.setImage("magicHatBunny.png");
         });
